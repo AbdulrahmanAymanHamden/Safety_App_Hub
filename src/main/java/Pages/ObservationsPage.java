@@ -7,11 +7,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class ObservationsPage {
 
     WebDriver driver;
     WebDriverWait wait;
+    LocalDate today = LocalDate.now();
+    String formattedDate = today.format(DateTimeFormatter.ofPattern("MMMM d, yyyy", Locale.ENGLISH));
+
+
 
     public ObservationsPage(WebDriver driver) {
         this.driver = driver;
@@ -21,7 +28,7 @@ public class ObservationsPage {
     // Locators
     private final By addObservations_Button = By.xpath("//button[@class=\"align-items-center btn btn-success\"]");
     private final By date_Input = By.id("date");
-    private final By dateSelected_Selection = By.xpath("(//span[@aria-label=\"May 28, 2025\"])[1]");
+    private final By dateSelected_Selection = By.xpath("//span[@aria-label=\""+formattedDate+"\"]");
     private final By shift_Selection = By.xpath("(//div[@class=\"select__control css-13cymwt-control\"]/div/div/input[contains(@id, 'react-select')])[1]");
     private final By time_Selection = By.id("custom-date-time-picker-input");
     private final By observationDuration_TextBox = By.xpath("//*[@id=\"duration\"]");
@@ -48,13 +55,13 @@ public class ObservationsPage {
     public void createPositiveObservation()  {
         Actions actions =new Actions(driver);
         driver.findElement(date_Input).click();
+        System.out.println(dateSelected_Selection);
         driver.findElement(dateSelected_Selection).click();
         driver.findElement(observationDuration_TextBox).sendKeys("5");
-//        driver.findElement(shift_Selection).click();
         driver.findElement(shift_Selection).sendKeys("night");
 
         try {
-            Thread.sleep(500);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -62,31 +69,31 @@ public class ObservationsPage {
         driver.findElement(time_Selection).click();
         driver.findElement(branch_Selection).sendKeys("Cairo branch");
         try {
-            Thread.sleep(500);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         actions.sendKeys(Keys.ENTER).perform();
         try {
-            Thread.sleep(500);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         driver.findElement(mainArea_Selection).sendKeys("main");
         try {
-            Thread.sleep(500);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         actions.sendKeys(Keys.ENTER).perform();
         try {
-            Thread.sleep(500);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         driver.findElement(subArea_Selection).sendKeys("sub");
         try {
-            Thread.sleep(500);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -94,7 +101,7 @@ public class ObservationsPage {
         driver.findElement(positiveObservation_Selection).click();
         driver.findElement(positiveObservationTitle_TextBox).sendKeys("AutomationTest");
         try {
-            Thread.sleep(500);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -104,12 +111,11 @@ public class ObservationsPage {
         driver.findElement(submit_Button).click();
         driver.findElement(confirm_Button).click();
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0, -500);"); // Scroll up 500 pixels
+
 
 
         driver.findElement(observationList_Button).click();
