@@ -18,12 +18,13 @@ public class PositiveObservation extends TestBase {
         loginPage.validateLoginSuccess();
         homePage.clickObservations();
         observationsPage.clickAddObservations();
-        observationsPage.createPositiveObservation();
-        homePage.validateObservationCreated();
+        observationsPage.createObservation();
+        observationsPage.creatPositiveObservation();
+        homePage.validatePositiveObservationCreated();
         homePage.addHSERepAction();
         homePage.addComfirmPostiveObservationAction();
-        homePage.validateObservationMoveToActionStated();
-        homePage.validatecreatorCanViewObservationInActionStated();
+        homePage.validatePositiveObservationMoveToActionStated();
+        homePage.validateCreatorCanViewPositiveObservationInActionStated();
         homePage.logingOut();
 
     }
