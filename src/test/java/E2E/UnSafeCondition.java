@@ -7,11 +7,11 @@ import Pages.ObservationsPage;
 import Utilities.JsonReader;
 import org.testng.annotations.Test;
 
-public class UnSafeActObservation extends TestBase {
+public class UnSafeCondition extends TestBase {
     @Test
-    public void testE2EUnSafeAct()
-    {
 
+    public void testE2EUnSafeCondition()
+    {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
         ObservationsPage observationsPage = new ObservationsPage(driver);
@@ -21,20 +21,21 @@ public class UnSafeActObservation extends TestBase {
         homePage.clickObservations();
         observationsPage.clickAddObservations();
         observationsPage.createObservation();
-        observationsPage.creatUnsafeActObservation();
+        observationsPage.creatUnsafeConditionObservation();
         homePage.validateUnSafeObservationCreatedOrUpdated();
         homePage.addHSERepAction();
-        homePage.addClarificationNeededfromCreatorAction();
-        homePage.validateObservationStatusClarificationNeeded();
-        homePage.editObservationByCreator();
-        observationsPage.makeClarificationCreator();
-        homePage.validateUnSafeObservationCreatedOrUpdated();
-        homePage.addHSERepAction();
-        homePage.addcloseAndNoActionRequiredAction();
-        homePage.validateNoActionRequiredObservationMoveToActionStated();
-        homePage.validateCreatorCanViewNoActionRequiredObservationInActionStated();
+        homePage.addCommitteFeedBack();
+        homePage.validateObservationStatusNeedCommitteFeedBack();
         homePage.logingOut();
 
-    }
-}
 
+
+
+
+
+    }
+
+
+
+
+}

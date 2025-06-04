@@ -2,6 +2,7 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -41,9 +42,15 @@ public class HomePage {
     private final By linkUser_Button = By.xpath("//a[@class=\"nav-link dropdown-user-link\"]");
     private final By logOut_Button = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div[1]/nav/div/ul/li/div/a[2]");
     private final By submit_Button = By.xpath("//button[@class=\"swal2-confirm btn btn-outline-secondary btn-success\"]");
-    private final By clarificationNeededFromCreatorButton = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[2]");
+    private final By clarificationNeededFromCreator_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[2]");
     private final By editOptionsAction_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/button[2]");
     private final By closeAndNoActionRequired_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[3]/div/span");
+    private final By needCommitteFeedBack_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[6]/div");
+    private final By personCommitte_Selection = By.xpath("//input[@class=\"select__input\"]");
+    private final By confirm_Button = By.xpath("//button[@class=\"swal2-confirm btn btn-outline-secondary btn-success\"]");
+    private final By submitSelectCommitte_Button = By.xpath("//button[@type=\"submit\"]");
+
+
 
 
 
@@ -71,7 +78,7 @@ public class HomePage {
     }
     public void addClarificationNeededfromCreatorAction()
     {
-        driver.findElement(clarificationNeededFromCreatorButton).click();
+        driver.findElement(clarificationNeededFromCreator_Button).click();
         driver.findElement(submit_Button).click();
     }
 
@@ -92,6 +99,29 @@ public class HomePage {
     {
         driver.findElement(closeAndNoActionRequired_Button).click();
         driver.findElement(submit_Button).click();
+    }
+    public void addCommitteFeedBack()
+    {
+        driver.findElement(needCommitteFeedBack_Button).click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        driver.findElement(personCommitte_Selection).sendKeys("aaa");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        actions.sendKeys(Keys.ENTER).perform();
+        driver.findElement(submitSelectCommitte_Button).click();
+        driver.findElement(confirm_Button).click();
     }
 
 
@@ -141,13 +171,13 @@ public class HomePage {
         Assert.assertEquals("Positive Observation", driver.findElement(viewingObservationStatus_Label).getText());
         driver.findElement(closeObservation_Button).click();
     }
-    public void validateUnSafeActObservationCreatedOrUpdated()
+    public void validateUnSafeObservationCreatedOrUpdated()
     {
         driver.findElement(viewing_dropDownList).click();
         driver.findElement(viewingAsHSERepNoActionStated_Button).click();
         Assert.assertEquals("Draft", driver.findElement(observationStatus_Label).getText());
     }
-    public void validateObservationStatus()
+    public void validateObservationStatusClarificationNeeded()
     {
         try {
             Thread.sleep(1000);
@@ -186,6 +216,22 @@ public class HomePage {
         driver.findElement(viewOptionsAction_Button).click();
         Assert.assertEquals("No Action Required", driver.findElement(viewingObservationStatus_Label).getText());
         driver.findElement(closeObservation_Button).click();
+    }
+
+    public void validateObservationStatusNeedCommitteFeedBack()
+    {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Assert.assertEquals("Need Committee Feedback", driver.findElement(observationStatus_Label).getText());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }

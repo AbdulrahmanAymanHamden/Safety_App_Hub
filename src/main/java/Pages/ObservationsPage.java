@@ -45,8 +45,9 @@ public class ObservationsPage {
     private final By mainArea_Selection = By.xpath("/html/body/div[1]/div[1]/div[1]/div/div/div/div[2]/div[3]/div/div/div/div[2]/div/div/div[2]/div/form/div[1]/div[7]/div/div[2]/div/div[1]/div[2]/input");
     private final By observationList_Button = By.xpath("//button[@class=\"align-items-center btn btn-primary\"]");
     private final By unSafeActObservation_Selection = By.xpath("//input[@value=\"unsafe_act\"]");
-    private final By unSafeActOptions_Selection = By.id("items-2");
+    private final By unSafeOptions_Selection = By.id("items-2");
     private final By update_Button = By.xpath("//button[@class=\"swal2-confirm btn btn-outline-secondary btn-success\"]");
+    private final By unSafeConditionObservation_Selection = By.xpath("//input[@value=\"unsafe_condition\"]");
 
 
 
@@ -58,7 +59,6 @@ public class ObservationsPage {
 
     public void createObservation()  {
         driver.findElement(date_Input).click();
-        System.out.println(dateSelected_Selection);
         driver.findElement(dateSelected_Selection).click();
         driver.findElement(observationDuration_TextBox).sendKeys("5");
         driver.findElement(shift_Selection).sendKeys("night");
@@ -129,7 +129,7 @@ public class ObservationsPage {
     {
         driver.findElement(unSafeActObservation_Selection).click();
         driver.findElement(observationTitle_TextBox).sendKeys("Automation Test");
-        driver.findElement(unSafeActOptions_Selection).click();
+        driver.findElement(unSafeOptions_Selection).click();
         driver.findElement(observationDetails_TextBox).sendKeys("Automation Test");
         driver.findElement(hasAction_Yes_Selection).click();
         driver.findElement(hasDiscussion_Yes_Selection).click();
@@ -148,6 +148,25 @@ public class ObservationsPage {
         driver.findElement(submit_Button).click();
         driver.findElement(update_Button).click();
     }
+
+    public void creatUnsafeConditionObservation()
+    {
+        driver.findElement(unSafeConditionObservation_Selection).click();
+        driver.findElement(observationTitle_TextBox).sendKeys("Automation Test");
+        driver.findElement(unSafeOptions_Selection).click();
+        driver.findElement(observationDetails_TextBox).sendKeys("Automation Test");
+        driver.findElement(hasAction_Yes_Selection).click();
+        driver.findElement(hasDiscussion_Yes_Selection).click();
+        driver.findElement(submit_Button).click();
+        driver.findElement(confirm_Button).click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        driver.findElement(observationList_Button).click();
+    }
+
 
 
     //Assertion
