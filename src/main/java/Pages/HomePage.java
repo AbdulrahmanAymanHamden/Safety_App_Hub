@@ -49,6 +49,8 @@ public class HomePage {
     private final By personCommitte_Selection = By.xpath("//input[@class=\"select__input\"]");
     private final By confirm_Button = By.xpath("//button[@class=\"swal2-confirm btn btn-outline-secondary btn-success\"]");
     private final By submitSelectCommitte_Button = By.xpath("//button[@type=\"submit\"]");
+    private final By closedWithImmedidateAction_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[4]/div/span");
+
 
 
 
@@ -100,7 +102,7 @@ public class HomePage {
         driver.findElement(closeAndNoActionRequired_Button).click();
         driver.findElement(submit_Button).click();
     }
-    public void addCommitteFeedBack()
+    public void addCommitteFeedBackAction()
     {
         driver.findElement(needCommitteFeedBack_Button).click();
         try {
@@ -122,6 +124,11 @@ public class HomePage {
         actions.sendKeys(Keys.ENTER).perform();
         driver.findElement(submitSelectCommitte_Button).click();
         driver.findElement(confirm_Button).click();
+    }
+    public void addClosedWithImmediateAction()
+    {
+        driver.findElement(closedWithImmedidateAction_Button).click();
+        driver.findElement(submit_Button).click();
     }
 
 
@@ -232,6 +239,38 @@ public class HomePage {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void validateClosedWithImmediateActionMovetoActionStated()
+    {
+        actions.scrollByAmount(0, -200).perform();
+
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        actions.scrollByAmount(0, -200).perform();
+
+
+        driver.findElement(observationActionStated_Button).click();
+        driver.findElement(viewing_dropDownList).click();
+        driver.findElement(viewingAsHSERepActionStated_Button).click();
+        driver.findElement(actionsObservation_Button).click();
+        driver.findElement(viewOptionsAction_Button).click();
+        Assert.assertEquals("Closed With Immediate Action", driver.findElement(viewingObservationStatus_Label).getText());
+        driver.findElement(closeObservation_Button).click();
+    }
+
+    public void validateCreatorCanViewClosedWithImmediateActionInActionStated()
+    {
+        driver.findElement(viewing_dropDownList).click();
+        driver.findElement(viewinAsCreatorActionStated_Button).click();
+        driver.findElement(actionsObservation_Button).click();
+        driver.findElement(viewOptionsAction_Button).click();
+        Assert.assertEquals("Closed With Immediate Action", driver.findElement(viewingObservationStatus_Label).getText());
+        driver.findElement(closeObservation_Button).click();
     }
 
 }

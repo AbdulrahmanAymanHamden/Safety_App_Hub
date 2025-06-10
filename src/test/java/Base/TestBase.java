@@ -34,12 +34,12 @@ public class TestBase {
         driver.get(config.getProperty("baseUrl"));
     }
 
-    @AfterClass
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+//    @AfterClass
+//    public void tearDown() {
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
 
     // Load configuration from config.properties file
     private void loadConfig() {

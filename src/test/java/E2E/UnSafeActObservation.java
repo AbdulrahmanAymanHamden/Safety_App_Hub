@@ -4,12 +4,11 @@ import Base.TestBase;
 import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.ObservationsPage;
-import Utilities.JsonReader;
 import org.testng.annotations.Test;
 
 public class UnSafeActObservation extends TestBase {
     @Test
-    public void testE2EUnSafeAct()
+    public void testE2EAddClarificationNeededAndCloseAndNoActions_Action()
     {
 
         LoginPage loginPage = new LoginPage(driver);
@@ -36,5 +35,53 @@ public class UnSafeActObservation extends TestBase {
         homePage.logingOut();
 
     }
+
+    @Test
+    public void testE2EAddCommiteFeedBack_Action()
+    {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        ObservationsPage observationsPage = new ObservationsPage(driver);
+
+        loginPage.login();
+        loginPage.validateLoginSuccess();
+        homePage.clickObservations();
+        observationsPage.clickAddObservations();
+        observationsPage.createObservation();
+        observationsPage.creatUnsafeActObservation();
+        homePage.validateUnSafeObservationCreatedOrUpdated();
+        homePage.addHSERepAction();
+        homePage.addCommitteFeedBackAction();
+        homePage.validateObservationStatusNeedCommitteFeedBack();
+        homePage.logingOut();
+
+    }
+
+    @Test
+    public void testE2EAddActionCloseWithImmediate_Action()
+    {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        ObservationsPage observationsPage = new ObservationsPage(driver);
+
+        loginPage.login();
+        loginPage.validateLoginSuccess();
+        homePage.clickObservations();
+        observationsPage.clickAddObservations();
+        observationsPage.createObservation();
+        observationsPage.creatUnsafeActObservation();
+        homePage.validateUnSafeObservationCreatedOrUpdated();
+        homePage.addHSERepAction();
+        homePage.addClosedWithImmediateAction();
+        homePage.validateClosedWithImmediateActionMovetoActionStated();
+        homePage.validateCreatorCanViewClosedWithImmediateActionInActionStated();
+        homePage.logingOut();
+
+
+
+    }
+
+
+
 }
 

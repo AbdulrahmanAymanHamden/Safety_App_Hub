@@ -4,7 +4,6 @@ import Base.TestBase;
 import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.ObservationsPage;
-import Utilities.JsonReader;
 import org.testng.annotations.Test;
 
 public class UnSafeCondition extends TestBase {
@@ -24,7 +23,7 @@ public class UnSafeCondition extends TestBase {
         observationsPage.creatUnsafeConditionObservation();
         homePage.validateUnSafeObservationCreatedOrUpdated();
         homePage.addHSERepAction();
-        homePage.addCommitteFeedBack();
+        homePage.addCommitteFeedBackAction();
         homePage.validateObservationStatusNeedCommitteFeedBack();
         homePage.logingOut();
 
