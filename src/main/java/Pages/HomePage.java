@@ -9,6 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class HomePage {
 
@@ -16,6 +19,9 @@ public class HomePage {
     WebDriverWait wait;
     JavascriptExecutor scroll;
     Actions actions;
+    LocalDate today = LocalDate.now();
+    String formattedDate = today.format(DateTimeFormatter.ofPattern("MMMM d, yyyy", Locale.ENGLISH));
+
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -48,8 +54,23 @@ public class HomePage {
     private final By needCommitteFeedBack_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[6]/div");
     private final By personCommitte_Selection = By.xpath("//input[@class=\"select__input\"]");
     private final By confirm_Button = By.xpath("//button[@class=\"swal2-confirm btn btn-outline-secondary btn-success\"]");
-    private final By submitSelectCommitte_Button = By.xpath("//button[@type=\"submit\"]");
+    private final By submitTypeSubmit_Button = By.xpath("//button[@type=\"submit\"]");
     private final By closedWithImmedidateAction_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[4]/div/span");
+    private final By addActionByHSEAction_Button  = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[5]/div/span");
+    private final By action_TextBox = By.xpath("//*[@id=\"tbody-pixel\"]/tr/td[2]/div/div/div/textarea");
+    private final By ownerDEPT_Selection = By.id("react-select-7-input");
+    private final By rESPDeoartemnts_Selection = By.id("react-select-8-input");
+    private final By pirority_Selection = By.id("react-select-6-input");
+    private final By date_Input = By.xpath("//input[@name=\"actions.0.due_date\"]");
+    private final By dateSelected_Selection = By.xpath("//span[@aria-label=\""+formattedDate+"\"]");
+//    private final By submitActions_Button = By.xpath("//button[@type=\"submit\"]");
+    private final By ownerDepartmentFeedBack_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[7]/div/span");
+    private final By ownerDeparment_Selection = By.id("react-select-6-input");
+
+
+
+
+
 
 
 
@@ -122,7 +143,7 @@ public class HomePage {
             throw new RuntimeException(e);
         }
         actions.sendKeys(Keys.ENTER).perform();
-        driver.findElement(submitSelectCommitte_Button).click();
+        driver.findElement(submitTypeSubmit_Button).click();
         driver.findElement(confirm_Button).click();
     }
     public void addClosedWithImmediateAction()
@@ -130,6 +151,52 @@ public class HomePage {
         driver.findElement(closedWithImmedidateAction_Button).click();
         driver.findElement(submit_Button).click();
     }
+    public void addActionByHSEAction()
+    {
+        driver.findElement(addActionByHSEAction_Button).click();
+        driver.findElement(action_TextBox).sendKeys("Automation Testing");
+        driver.findElement(ownerDEPT_Selection).sendKeys("human");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        actions.sendKeys(Keys.ENTER).perform();
+        driver.findElement(rESPDeoartemnts_Selection).sendKeys("human");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        actions.sendKeys(Keys.ENTER).perform();
+        driver.findElement(pirority_Selection).sendKeys("high");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        actions.sendKeys(Keys.ENTER).perform();
+        driver.findElement(date_Input).click();
+        driver.findElement(dateSelected_Selection).click();
+        driver.findElement(submitTypeSubmit_Button).click();
+        driver.findElement(confirm_Button).click();
+
+    }
+    public void addOwnerDepartmentFeedBackRequired()
+    {
+        driver.findElement(ownerDepartmentFeedBack_Button).click();
+        driver.findElement(ownerDeparment_Selection).sendKeys("human");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        actions.sendKeys(Keys.ENTER).perform();
+        driver.findElement(submitTypeSubmit_Button).click();
+        driver.findElement(confirm_Button).click();
+    }
+
+
 
 
 
@@ -271,6 +338,51 @@ public class HomePage {
         driver.findElement(viewOptionsAction_Button).click();
         Assert.assertEquals("Closed With Immediate Action", driver.findElement(viewingObservationStatus_Label).getText());
         driver.findElement(closeObservation_Button).click();
+    }
+    public void validateActionInProgressMovetoActionStated()
+    {
+        actions.scrollByAmount(0, -300).perform();
+
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        actions.scrollByAmount(0, -300).perform();
+
+
+        driver.findElement(observationActionStated_Button).click();
+        driver.findElement(viewing_dropDownList).click();
+        driver.findElement(viewingAsHSERepActionStated_Button).click();
+        driver.findElement(actionsObservation_Button).click();
+        driver.findElement(viewOptionsAction_Button).click();
+        Assert.assertEquals("Action In Progress", driver.findElement(viewingObservationStatus_Label).getText());
+        driver.findElement(closeObservation_Button).click();
+    }
+    public void validateCreatorCanViewActionInProgressInActionStated()
+    {
+        driver.findElement(viewing_dropDownList).click();
+        driver.findElement(viewinAsCreatorActionStated_Button).click();
+        driver.findElement(actionsObservation_Button).click();
+        driver.findElement(viewOptionsAction_Button).click();
+        Assert.assertEquals("Action In Progress", driver.findElement(viewingObservationStatus_Label).getText());
+        driver.findElement(closeObservation_Button).click();
+    }
+    public void validateObservationStatusIsOwnerDeptFeedbackRequired()
+    {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Assert.assertEquals("Owner Dept. Feedback Required", driver.findElement(observationStatus_Label).getText());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }

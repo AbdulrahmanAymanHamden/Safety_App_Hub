@@ -76,8 +76,47 @@ public class UnSafeActObservation extends TestBase {
         homePage.validateClosedWithImmediateActionMovetoActionStated();
         homePage.validateCreatorCanViewClosedWithImmediateActionInActionStated();
         homePage.logingOut();
+    }
 
+    @Test
+    public void testE2EAddActionByHSE_Action()
+    {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        ObservationsPage observationsPage = new ObservationsPage(driver);
 
+        loginPage.login();
+        loginPage.validateLoginSuccess();
+        homePage.clickObservations();
+        observationsPage.clickAddObservations();
+        observationsPage.createObservation();
+        observationsPage.creatUnsafeActObservation();
+        homePage.validateUnSafeObservationCreatedOrUpdated();
+        homePage.addHSERepAction();
+        homePage.addActionByHSEAction();
+        homePage.validateActionInProgressMovetoActionStated();
+        homePage.validateCreatorCanViewActionInProgressInActionStated();
+        homePage.logingOut();
+    }
+
+    @Test
+    public void testE2EAddOwnerDepartmentFeedBackRequired_Action()
+    {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        ObservationsPage observationsPage = new ObservationsPage(driver);
+
+        loginPage.login();
+        loginPage.validateLoginSuccess();
+        homePage.clickObservations();
+        observationsPage.clickAddObservations();
+        observationsPage.createObservation();
+        observationsPage.creatUnsafeActObservation();
+        homePage.validateUnSafeObservationCreatedOrUpdated();
+        homePage.addHSERepAction();
+        homePage.addOwnerDepartmentFeedBackRequired();
+        homePage.validateObservationStatusIsOwnerDeptFeedbackRequired();
+        homePage.logingOut();
 
     }
 
