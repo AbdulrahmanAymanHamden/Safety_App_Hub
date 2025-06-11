@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -21,6 +22,7 @@ public class HomePage {
     Actions actions;
     LocalDate today = LocalDate.now();
     String formattedDate = today.format(DateTimeFormatter.ofPattern("MMMM d, yyyy", Locale.ENGLISH));
+
 
 
     public HomePage(WebDriver driver) {
@@ -63,7 +65,6 @@ public class HomePage {
     private final By pirority_Selection = By.id("react-select-6-input");
     private final By date_Input = By.xpath("//input[@name=\"actions.0.due_date\"]");
     private final By dateSelected_Selection = By.xpath("//span[@aria-label=\""+formattedDate+"\"]");
-//    private final By submitActions_Button = By.xpath("//button[@type=\"submit\"]");
     private final By ownerDepartmentFeedBack_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[7]/div/span");
     private final By ownerDeparment_Selection = By.id("react-select-6-input");
 
@@ -82,6 +83,10 @@ public class HomePage {
 
 
     // Actions
+    public void clickViewingDropDown()
+    {
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(viewing_dropDownList))).click();
+    }
 
     public void clickObservations()
     {
@@ -89,7 +94,7 @@ public class HomePage {
     }
     public void addHSERepAction()
     {
-        driver.findElement(viewing_dropDownList).click();
+        clickViewingDropDown();
         driver.findElement(viewingAsHSERepNoActionStated_Button).click();
         driver.findElement(actionsObservation_Button).click();
         driver.findElement(addHSEAction_Button).click();
@@ -112,7 +117,7 @@ public class HomePage {
     }
     public void editObservationByCreator()
     {
-        driver.findElement(viewing_dropDownList).click();
+        clickViewingDropDown();
         driver.findElement(viewingAsCreatorNoActionStated_button).click();
         driver.findElement(actionsObservation_Button).click();
         driver.findElement(editOptionsAction_Button).click();
@@ -211,7 +216,7 @@ public class HomePage {
     //Assertion
     public void validatePositiveObservationCreated()
     {
-        driver.findElement(viewing_dropDownList).click();
+        clickViewingDropDown();
         driver.findElement(viewingAsCreatorNoActionStated_button).click();
         Assert.assertEquals("Positive Observation", driver.findElement(observationStatus_Label).getText());
     }
@@ -229,7 +234,7 @@ public class HomePage {
 
 
         driver.findElement(observationActionStated_Button).click();
-        driver.findElement(viewing_dropDownList).click();
+        clickViewingDropDown();
         driver.findElement(viewingAsHSERepActionStated_Button).click();
         driver.findElement(actionsObservation_Button).click();
         driver.findElement(viewOptionsAction_Button).click();
@@ -238,7 +243,7 @@ public class HomePage {
     }
     public void validateCreatorCanViewPositiveObservationInActionStated()
     {
-        driver.findElement(viewing_dropDownList).click();
+        clickViewingDropDown();
         driver.findElement(viewinAsCreatorActionStated_Button).click();
         driver.findElement(actionsObservation_Button).click();
         driver.findElement(viewOptionsAction_Button).click();
@@ -247,7 +252,12 @@ public class HomePage {
     }
     public void validateUnSafeObservationCreatedOrUpdated()
     {
-        driver.findElement(viewing_dropDownList).click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        clickViewingDropDown();
         driver.findElement(viewingAsHSERepNoActionStated_Button).click();
         Assert.assertEquals("Draft", driver.findElement(observationStatus_Label).getText());
     }
@@ -275,7 +285,7 @@ public class HomePage {
 
 
         driver.findElement(observationActionStated_Button).click();
-        driver.findElement(viewing_dropDownList).click();
+        clickViewingDropDown();
         driver.findElement(viewingAsHSERepActionStated_Button).click();
         driver.findElement(actionsObservation_Button).click();
         driver.findElement(viewOptionsAction_Button).click();
@@ -284,7 +294,7 @@ public class HomePage {
     }
     public void validateCreatorCanViewNoActionRequiredObservationInActionStated()
     {
-        driver.findElement(viewing_dropDownList).click();
+        clickViewingDropDown();
         driver.findElement(viewinAsCreatorActionStated_Button).click();
         driver.findElement(actionsObservation_Button).click();
         driver.findElement(viewOptionsAction_Button).click();
@@ -322,7 +332,7 @@ public class HomePage {
 
 
         driver.findElement(observationActionStated_Button).click();
-        driver.findElement(viewing_dropDownList).click();
+        clickViewingDropDown();
         driver.findElement(viewingAsHSERepActionStated_Button).click();
         driver.findElement(actionsObservation_Button).click();
         driver.findElement(viewOptionsAction_Button).click();
@@ -332,7 +342,7 @@ public class HomePage {
 
     public void validateCreatorCanViewClosedWithImmediateActionInActionStated()
     {
-        driver.findElement(viewing_dropDownList).click();
+        clickViewingDropDown();
         driver.findElement(viewinAsCreatorActionStated_Button).click();
         driver.findElement(actionsObservation_Button).click();
         driver.findElement(viewOptionsAction_Button).click();
@@ -353,7 +363,7 @@ public class HomePage {
 
 
         driver.findElement(observationActionStated_Button).click();
-        driver.findElement(viewing_dropDownList).click();
+        clickViewingDropDown();
         driver.findElement(viewingAsHSERepActionStated_Button).click();
         driver.findElement(actionsObservation_Button).click();
         driver.findElement(viewOptionsAction_Button).click();
@@ -362,7 +372,7 @@ public class HomePage {
     }
     public void validateCreatorCanViewActionInProgressInActionStated()
     {
-        driver.findElement(viewing_dropDownList).click();
+        clickViewingDropDown();
         driver.findElement(viewinAsCreatorActionStated_Button).click();
         driver.findElement(actionsObservation_Button).click();
         driver.findElement(viewOptionsAction_Button).click();
