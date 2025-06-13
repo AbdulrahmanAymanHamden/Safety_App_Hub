@@ -7,6 +7,7 @@ import Pages.ObservationsPage;
 import org.testng.annotations.Test;
 
 public class UnSafeActObservation extends TestBase {
+    //make unsafeact observation and add action "clarificaion needed" then update observation as a creator and add action "close and no actions" finally logged out.
     @Test
     public void testE2EAddClarificationNeededAndCloseAndNoActions_Action()
     {
@@ -36,6 +37,7 @@ public class UnSafeActObservation extends TestBase {
 
     }
 
+    // make unsafeact observation and add action " committe feedback needed" finally logged out.
     @Test
     public void testE2EAddCommiteFeedBack_Action()
     {
@@ -57,6 +59,8 @@ public class UnSafeActObservation extends TestBase {
 
     }
 
+
+    //make unsafact observation and add action "closed with immediate action" finally logged out.
     @Test
     public void testE2EAddActionCloseWithImmediate_Action()
     {
@@ -78,6 +82,7 @@ public class UnSafeActObservation extends TestBase {
         homePage.logingOut();
     }
 
+    //make unsafeact observation and add action "add action by HSE REP." finally logged out.
     @Test
     public void testE2EAddActionByHSE_Action()
     {
@@ -99,6 +104,7 @@ public class UnSafeActObservation extends TestBase {
         homePage.logingOut();
     }
 
+    //make unsafe act observation  and add action "owner DEPT. feedback required" finally logged out.
     @Test
     public void testE2EAddOwnerDepartmentFeedBackRequired_Action()
     {

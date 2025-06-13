@@ -2,6 +2,7 @@ package Pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -54,10 +55,12 @@ public class ObservationsPage {
     // Actions
 
     public void clickAddObservations() {
+
         driver.findElement(addObservations_Button).click();
     }
 
-    public void createObservation()  {
+    public void createObservation()
+    {
         driver.findElement(date_Input).click();
         driver.findElement(dateSelected_Selection).click();
         driver.findElement(observationDuration_TextBox).sendKeys("5");
@@ -140,7 +143,7 @@ public class ObservationsPage {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        driver.findElement(observationList_Button).click();
+        wait.until(ExpectedConditions.elementToBeClickable(observationList_Button)).click();
     }
     public void makeClarificationCreator()
     {

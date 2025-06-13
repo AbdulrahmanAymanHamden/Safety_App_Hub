@@ -26,13 +26,8 @@ public class UnSafeCondition extends TestBase {
         homePage.addCommitteFeedBackAction();
         homePage.validateObservationStatusNeedCommitteFeedBack();
         homePage.logingOut();
-
-
-
-
-
-
     }
+
 
 
 
