@@ -60,13 +60,13 @@ public class HomePage {
     private final By closedWithImmedidateAction_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[4]/div/span");
     private final By addActionByHSEAction_Button  = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[5]/div/span");
     private final By action_TextBox = By.xpath("//*[@id=\"tbody-pixel\"]/tr/td[2]/div/div/div/textarea");
-    private final By ownerDEPT_Selection = By.id("react-select-7-input");
-    private final By rESPDeoartemnts_Selection = By.id("react-select-8-input");
-    private final By pirority_Selection = By.id("react-select-6-input");
+    private final By ownerDEPT_Selection = By.xpath("/html/body/div[3]/div/div[1]/div/div/div[2]/div/form/div[1]/table/tbody/tr/td[3]/div/div/div[2]/div[1]/div[1]/div[2]/input");
+    private final By rESPDeoartemnts_Selection = By.xpath("/html/body/div[3]/div/div[1]/div/div/div[2]/div/form/div[1]/table/tbody/tr/td[4]/div/div/div[2]/div[1]/div[1]/div[2]/input");
+    private final By pirority_Selection = By.xpath("/html/body/div[3]/div/div[1]/div/div/div[2]/div/form/div[1]/table/tbody/tr/td[5]/div/div/div/div/div[1]/div[2]/input");
     private final By date_Input = By.xpath("//input[@name=\"actions.0.due_date\"]");
     private final By dateSelected_Selection = By.xpath("//span[@aria-label=\""+formattedDate+"\"]");
     private final By ownerDepartmentFeedBack_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[7]/div/span");
-    private final By ownerDeparment_Selection = By.id("react-select-6-input");
+    private final By ownerDeparment_Selection = By.xpath("/html/body/div[3]/div/div[1]/div/div/div[2]/div/form/div[1]/div[2]/div[1]/div[1]/div[2]/input");
 
 
 
@@ -90,7 +90,7 @@ public class HomePage {
 
     public void clickObservations()
     {
-        driver.findElement(observations_Section).click();
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(observations_Section))).click();
     }
     public void addHSERepAction()
     {
