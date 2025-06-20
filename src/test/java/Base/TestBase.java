@@ -35,13 +35,13 @@ public class TestBase {
         // Navigate to base URL
         driver.get(config.getProperty("baseUrl"));
     }
-
-    @AfterMethod
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+//
+//    @AfterMethod
+//    public void tearDown() {
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
 
     // Load configuration from config.properties file
     private void loadConfig() {

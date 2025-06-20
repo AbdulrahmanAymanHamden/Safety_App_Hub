@@ -67,6 +67,7 @@ public class HomePage {
     private final By dateSelected_Selection = By.xpath("//span[@aria-label=\""+formattedDate+"\"]");
     private final By ownerDepartmentFeedBack_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[7]/div/span");
     private final By ownerDeparment_Selection = By.xpath("/html/body/div[3]/div/div[1]/div/div/div[2]/div/form/div[1]/div[2]/div[1]/div[1]/div[2]/input");
+    private final By noActionStated_Button = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div/div[2]/div[3]/div/ul/li[1]/a/div/div[2]");
 
 
 
@@ -200,6 +201,27 @@ public class HomePage {
         driver.findElement(submitTypeSubmit_Button).click();
         driver.findElement(confirm_Button).click();
     }
+    public void clickViewObservationInActionStated()
+    {
+        driver.findElement(actionsObservation_Button).click();
+        driver.findElement(viewOptionsAction_Button).click();
+
+    }
+
+    public void clickEditObservationByHSE()
+    {
+        clickViewingDropDown();
+        driver.findElement(viewingAsHSERepNoActionStated_Button).click();
+        driver.findElement(actionsObservation_Button).click();
+        driver.findElement(editOptionsAction_Button).click();
+
+    }
+    public void clickNoActionStatedButton()
+    {
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(noActionStated_Button))).click();
+
+    }
+
 
 
 
@@ -264,7 +286,7 @@ public class HomePage {
     public void validateObservationStatusClarificationNeeded()
     {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -394,6 +416,18 @@ public class HomePage {
         }
 
     }
+    public void validateHSECanViewNoActionRequiredObservationInActionStated()
+    {
+        clickViewingDropDown();
+        driver.findElement(viewingAsHSERepActionStated_Button).click();
+        driver.findElement(actionsObservation_Button).click();
+        driver.findElement(viewOptionsAction_Button).click();
+        Assert.assertEquals("No Action Required", driver.findElement(viewingObservationStatus_Label).getText());
+        driver.findElement(closeObservation_Button).click();
+    }
+
+
+
 
 }
 

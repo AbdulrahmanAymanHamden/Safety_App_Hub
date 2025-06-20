@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -49,14 +50,23 @@ public class ObservationsPage {
     private final By unSafeOptions_Selection = By.id("items-2");
     private final By update_Button = By.xpath("//button[@class=\"swal2-confirm btn btn-outline-secondary btn-success\"]");
     private final By unSafeConditionObservation_Selection = By.xpath("//input[@value=\"unsafe_condition\"]");
+    private final By observationType_Label = By.xpath("/html/body/div[1]/div[1]/div[1]/div/div/div[1]/div[2]/div[3]/div/div/div/div[2]/div[4]/div[2]/div/table/tbody/tr[1]/td[6]/div/span");
+    private final By editObservationTitle_Label = By.xpath("//*[@id=\"my-modal\"]/div/div[2]/div/table/tbody/tr[2]/td[2]/div");
+    private final By closeSaftyObservation_Button = By.xpath("//button[@class=\"btn-close\"]");
+
 
 
 
     // Actions
 
     public void clickAddObservations() {
-
-        driver.findElement(addObservations_Button).click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        actions.scrollByAmount(0, -300).perform();
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(addObservations_Button))).click();
     }
 
     public void createObservation()
@@ -170,9 +180,41 @@ public class ObservationsPage {
         driver.findElement(observationList_Button).click();
     }
 
+    public void editByCreatorInObservationPage()
+    {
+        driver.findElement(observationTitle_TextBox).sendKeys("edit by creator");
+        driver.findElement(submit_Button).click();
+        driver.findElement(update_Button).click();
+    }
+    public void editObservationByHSE()
+    {
+        driver.findElement(observationTitle_TextBox).clear();
+        driver.findElement(observationTitle_TextBox).sendKeys(" edit by HSE");
+        driver.findElement(submit_Button).click();
+        driver.findElement(update_Button).click();
+    }
 
 
     //Assertion
+    public void validateCreatoCanViewObservationInNoActionStatedAndValidateItAlreadyModified()
+    {
+
+        Assert.assertEquals(driver.findElement(observationType_Label).getText(),"Unsafe Act");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(editObservationTitle_Label));
+        Assert.assertEquals(driver.findElement(editObservationTitle_Label).getText(),"Automation Testedit by creator");
+        driver.findElement(closeSaftyObservation_Button).click();
+
+    }
+
+    public void validateHSECanViewObservationInNoActionStatedAndValidateItAlreadyModified()
+    {
+
+        Assert.assertEquals(driver.findElement(observationType_Label).getText(),"Unsafe Act");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(editObservationTitle_Label));
+        Assert.assertEquals(driver.findElement(editObservationTitle_Label).getText(),"Automation Testedit by creator edit by HSE");
+        driver.findElement(closeSaftyObservation_Button).click();
+
+    }
 
 
 
