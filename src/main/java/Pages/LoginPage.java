@@ -1,5 +1,6 @@
 package Pages;
 
+import Utilities.ElementActions;
 import Utilities.JsonReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -40,11 +41,17 @@ public class LoginPage {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        driver.findElement(companyId_TextBox).sendKeys(companyID);
-        driver.findElement(companyLogin_Button).click();
-        driver.findElement(email_TextBox).sendKeys(email);
-        driver.findElement(password_TextBox).sendKeys(password);
-        driver.findElement(login_Button).click();
+        ElementActions.type(driver , companyId_TextBox , companyID);
+        ElementActions.click(driver , companyLogin_Button);
+        ElementActions.type(driver , email_TextBox , email);
+        ElementActions.type(driver , password_TextBox , password);
+        ElementActions.click(driver , login_Button);
+
+//        driver.findElement(companyId_TextBox).sendKeys(companyID);
+//        driver.findElement(companyLogin_Button).click();
+//        driver.findElement(email_TextBox).sendKeys(email);
+//        driver.findElement(password_TextBox).sendKeys(password);
+//        driver.findElement(login_Button).click();
     }
 
     // Assertions (add your own if needed)

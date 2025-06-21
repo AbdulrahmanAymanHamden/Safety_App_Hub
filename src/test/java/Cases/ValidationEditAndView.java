@@ -25,7 +25,7 @@ public class ValidationEditAndView extends TestBase {
         homePage.editObservationByCreator();
         observationsPage.editByCreatorInObservationPage();
         homePage.clickViewObservationInActionStated();
-        observationsPage.validateCreatoCanViewObservationInNoActionStatedAndValidateItAlreadyModified();
+        observationsPage.validateCreatorCanViewObservationInNoActionStatedAndValidateItAlreadyModified();
         homePage.clickEditObservationByHSE();
         observationsPage.editObservationByHSE();
         homePage.clickViewObservationInActionStated();
@@ -51,7 +51,7 @@ public class ValidationEditAndView extends TestBase {
         homePage.editObservationByCreator();
         observationsPage.editByCreatorInObservationPage();
         homePage.clickViewObservationInActionStated();
-        observationsPage.validateCreatoCanViewObservationInNoActionStatedAndValidateItAlreadyModified();
+        observationsPage.validateCreatorCanViewObservationInNoActionStatedAndValidateItAlreadyModified();
         homePage.clickEditObservationByHSE();
         observationsPage.editObservationByHSE();
         homePage.clickViewObservationInActionStated();
@@ -68,7 +68,7 @@ public class ValidationEditAndView extends TestBase {
         homePage.editObservationByCreator();
         observationsPage.editByCreatorInObservationPage();
         homePage.clickViewObservationInActionStated();
-        observationsPage.validateCreatoCanViewObservationInNoActionStatedAndValidateItAlreadyModified();
+        observationsPage.validateCreatorCanViewObservationInNoActionStatedAndValidateItAlreadyModified();
         homePage.clickEditObservationByHSE();
         observationsPage.editObservationByHSE();
         homePage.clickViewObservationInActionStated();
@@ -86,7 +86,7 @@ public class ValidationEditAndView extends TestBase {
         homePage.editObservationByCreator();
         observationsPage.editByCreatorInObservationPage();
         homePage.clickViewObservationInActionStated();
-        observationsPage.validateCreatoCanViewObservationInNoActionStatedAndValidateItAlreadyModified();
+        observationsPage.validateCreatorCanViewObservationInNoActionStatedAndValidateItAlreadyModified();
         homePage.clickEditObservationByHSE();
         observationsPage.editObservationByHSE();
         homePage.clickViewObservationInActionStated();
@@ -104,7 +104,7 @@ public class ValidationEditAndView extends TestBase {
         homePage.editObservationByCreator();
         observationsPage.editByCreatorInObservationPage();
         homePage.clickViewObservationInActionStated();
-        observationsPage.validateCreatoCanViewObservationInNoActionStatedAndValidateItAlreadyModified();
+        observationsPage.validateCreatorCanViewObservationInNoActionStatedAndValidateItAlreadyModified();
         homePage.clickEditObservationByHSE();
         observationsPage.editObservationByHSE();
         homePage.clickViewObservationInActionStated();

@@ -27,7 +27,7 @@ public class TestBase {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         // options.addArguments("--headless"); // Uncomment for headless mode
-
+        options.addArguments("--force-device-scale-factor=0.75");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));

@@ -196,7 +196,7 @@ public class ObservationsPage {
 
 
     //Assertion
-    public void validateCreatoCanViewObservationInNoActionStatedAndValidateItAlreadyModified()
+    public void validateCreatorCanViewObservationInNoActionStatedAndValidateItAlreadyModified()
     {
 
         Assert.assertEquals(driver.findElement(observationType_Label).getText(),"Unsafe Act");
