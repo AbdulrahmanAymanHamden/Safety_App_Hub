@@ -112,7 +112,7 @@ public class ValidationEditAndView extends TestBase {
         homePage.addHSERepAction();
         homePage.addOwnerDepartmentFeedBackRequired();
         homePage.validateObservationStatusIsOwnerDeptFeedbackRequired();
-        homePage.logingOut();
+        homePage.logOut();
 
 
     }

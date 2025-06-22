@@ -33,7 +33,7 @@ public class UnSafeActObservation extends TestBase {
         homePage.addcloseAndNoActionRequiredAction();
         homePage.validateNoActionRequiredObservationMoveToActionStated();
         homePage.validateCreatorCanViewNoActionRequiredObservationInActionStated();
-        homePage.logingOut();
+        homePage.logOut();
 
     }
 
@@ -55,7 +55,7 @@ public class UnSafeActObservation extends TestBase {
         homePage.addHSERepAction();
         homePage.addCommitteFeedBackAction();
         homePage.validateObservationStatusNeedCommitteFeedBack();
-        homePage.logingOut();
+        homePage.logOut();
 
     }
 
@@ -79,7 +79,7 @@ public class UnSafeActObservation extends TestBase {
         homePage.addClosedWithImmediateAction();
         homePage.validateClosedWithImmediateActionMovetoActionStated();
         homePage.validateCreatorCanViewClosedWithImmediateActionInActionStated();
-        homePage.logingOut();
+        homePage.logOut();
     }
 
     //make unsafeact observation and add action "add action by HSE REP." finally logged out.
@@ -101,7 +101,7 @@ public class UnSafeActObservation extends TestBase {
         homePage.addActionByHSEAction();
         homePage.validateActionInProgressMovetoActionStated();
         homePage.validateCreatorCanViewActionInProgressInActionStated();
-        homePage.logingOut();
+        homePage.logOut();
     }
 
     //make unsafe act observation  and add action "owner DEPT. feedback required" finally logged out.
@@ -122,7 +122,7 @@ public class UnSafeActObservation extends TestBase {
         homePage.addHSERepAction();
         homePage.addOwnerDepartmentFeedBackRequired();
         homePage.validateObservationStatusIsOwnerDeptFeedbackRequired();
-        homePage.logingOut();
+        homePage.logOut();
 
     }
 

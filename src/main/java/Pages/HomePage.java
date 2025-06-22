@@ -1,5 +1,6 @@
 package Pages;
 
+import Utilities.ElementActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -43,7 +44,7 @@ public class HomePage {
     private final By viewingAsHSERepActionStated_Button = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div/div[2]/div[3]/div/div/div/div/div[1]/div/div/div/div/button[3]");
     private final By actionsObservation_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[1]");
     private final By addHSEAction_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/button");
-    private final By ConfirmPositiveObservation_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button");
+    private final By confirmPositiveObservation_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button");
     private final By observationActionStated_Button = By.xpath("/html/body/div[1]/div[1]/div[1]/div/div/div/div[2]/div[3]/div/ul/li[2]/a");
     private final By viewOptionsAction_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/button");
     private final By closeObservation_Button = By.xpath("//button[@class=\"btn-close\"]");
@@ -86,139 +87,176 @@ public class HomePage {
     // Actions
     public void clickViewingDropDown()
     {
-        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(viewing_dropDownList))).click();
+        ElementActions.click(driver,viewing_dropDownList);
+//        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(viewing_dropDownList))).click();
     }
 
     public void clickObservations()
     {
-        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(observations_Section))).click();
+        ElementActions.click(driver,observations_Section);
+//        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(observations_Section))).click();
     }
     public void addHSERepAction()
     {
         clickViewingDropDown();
-        driver.findElement(viewingAsHSERepNoActionStated_Button).click();
-        driver.findElement(actionsObservation_Button).click();
-        driver.findElement(addHSEAction_Button).click();
+        ElementActions.click(driver,viewingAsHSERepNoActionStated_Button);
+//        driver.findElement(viewingAsHSERepNoActionStated_Button).click();
+        ElementActions.click(driver,actionsObservation_Button);
+//        driver.findElement(actionsObservation_Button).click();
+        ElementActions.click(driver,addHSEAction_Button);
+//        driver.findElement(addHSEAction_Button).click();
     }
     public void addComfirmPostiveObservationAction()
     {
-        driver.findElement(ConfirmPositiveObservation_Button).click();
-        driver.findElement(submit_Button).click();
+        ElementActions.click(driver,confirmPositiveObservation_Button);
+//        driver.findElement(confirmPositiveObservation_Button).click();
+        ElementActions.click(driver,submit_Button);
+//        driver.findElement(submit_Button).click();
     }
     public void addClarificationNeededfromCreatorAction()
     {
-        driver.findElement(clarificationNeededFromCreator_Button).click();
-        driver.findElement(submit_Button).click();
+        ElementActions.click(driver,clarificationNeededFromCreator_Button);
+//        driver.findElement(clarificationNeededFromCreator_Button).click();
+        ElementActions.click(driver,submit_Button);
+//        driver.findElement(submit_Button).click();
     }
 
-    public void logingOut()
+    public void logOut()
     {
-        driver.findElement(linkUser_Button).click();
-        driver.findElement(logOut_Button).click();
+        ElementActions.click(driver,linkUser_Button);
+//        driver.findElement(linkUser_Button).click();
+        ElementActions.click(driver,logOut_Button);
+//        driver.findElement(logOut_Button).click();
     }
     public void editObservationByCreator()
     {
         clickViewingDropDown();
-        driver.findElement(viewingAsCreatorNoActionStated_button).click();
-        driver.findElement(actionsObservation_Button).click();
-        driver.findElement(editOptionsAction_Button).click();
+        ElementActions.click(driver,viewingAsCreatorNoActionStated_button);
+//        driver.findElement(viewingAsCreatorNoActionStated_button).click();
+        ElementActions.click(driver,actionsObservation_Button);
+//        driver.findElement(actionsObservation_Button).click();
+        ElementActions.click(driver,editOptionsAction_Button);
+//        driver.findElement(editOptionsAction_Button).click();
 
     }
     public void addcloseAndNoActionRequiredAction()
     {
-        driver.findElement(closeAndNoActionRequired_Button).click();
-        driver.findElement(submit_Button).click();
+        ElementActions.click(driver,closeAndNoActionRequired_Button);
+//        driver.findElement(closeAndNoActionRequired_Button).click();
+        ElementActions.click(driver,submit_Button);
+//        driver.findElement(submit_Button).click();
     }
     public void addCommitteFeedBackAction()
     {
-        driver.findElement(needCommitteFeedBack_Button).click();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        driver.findElement(personCommitte_Selection).sendKeys("aaa");
+        ElementActions.click(driver,needCommitteFeedBack_Button);
+//        driver.findElement(needCommitteFeedBack_Button).click();
+        ElementActions.type(driver,personCommitte_Selection,"aaa");
+
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+//        driver.findElement(personCommitte_Selection).sendKeys("aaa");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         actions.sendKeys(Keys.ENTER).perform();
-        driver.findElement(submitTypeSubmit_Button).click();
-        driver.findElement(confirm_Button).click();
+        ElementActions.click(driver,submitTypeSubmit_Button);
+//        driver.findElement(submitTypeSubmit_Button).click();
+        ElementActions.click(driver,confirm_Button);
+//        driver.findElement(confirm_Button).click();
     }
     public void addClosedWithImmediateAction()
     {
-        driver.findElement(closedWithImmedidateAction_Button).click();
-        driver.findElement(submit_Button).click();
+        ElementActions.click(driver,closedWithImmedidateAction_Button);
+//        driver.findElement(closedWithImmedidateAction_Button).click();
+        ElementActions.click(driver,submit_Button);
+//        driver.findElement(submit_Button).click();
     }
     public void addActionByHSEAction()
     {
-        driver.findElement(addActionByHSEAction_Button).click();
-        driver.findElement(action_TextBox).sendKeys("Automation Testing");
-        driver.findElement(ownerDEPT_Selection).sendKeys("human");
+        ElementActions.click(driver,addActionByHSEAction_Button);
+//        driver.findElement(addActionByHSEAction_Button).click();
+        ElementActions.type(driver,action_TextBox,"Automation Testing");
+//        driver.findElement(action_TextBox).sendKeys("Automation Testing");
+        ElementActions.type(driver,ownerDEPT_Selection,"human");
+//        driver.findElement(ownerDEPT_Selection).sendKeys("human");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         actions.sendKeys(Keys.ENTER).perform();
-        driver.findElement(rESPDeoartemnts_Selection).sendKeys("human");
+        ElementActions.type(driver,rESPDeoartemnts_Selection,"human");
+//        driver.findElement(rESPDeoartemnts_Selection).sendKeys("human");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         actions.sendKeys(Keys.ENTER).perform();
-        driver.findElement(pirority_Selection).sendKeys("high");
+        ElementActions.type(driver,pirority_Selection,"high");
+//        driver.findElement(pirority_Selection).sendKeys("high");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         actions.sendKeys(Keys.ENTER).perform();
-        driver.findElement(date_Input).click();
-        driver.findElement(dateSelected_Selection).click();
-        driver.findElement(submitTypeSubmit_Button).click();
-        driver.findElement(confirm_Button).click();
+        ElementActions.click(driver,date_Input);
+//        driver.findElement(date_Input).click();
+        ElementActions.click(driver,dateSelected_Selection);
+//        driver.findElement(dateSelected_Selection).click();
+        ElementActions.click(driver,submitTypeSubmit_Button);
+//        driver.findElement(submitTypeSubmit_Button).click();
+        ElementActions.click(driver,confirm_Button);
+//        driver.findElement(confirm_Button).click();
 
     }
     public void addOwnerDepartmentFeedBackRequired()
     {
-        driver.findElement(ownerDepartmentFeedBack_Button).click();
-        driver.findElement(ownerDeparment_Selection).sendKeys("human");
+        ElementActions.click(driver,ownerDepartmentFeedBack_Button);
+//        driver.findElement(ownerDepartmentFeedBack_Button).click();
+        ElementActions.type(driver,ownerDeparment_Selection,"human");
+//        driver.findElement(ownerDeparment_Selection).sendKeys("human");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         actions.sendKeys(Keys.ENTER).perform();
-        driver.findElement(submitTypeSubmit_Button).click();
-        driver.findElement(confirm_Button).click();
+        ElementActions.click(driver,submitTypeSubmit_Button);
+//        driver.findElement(submitTypeSubmit_Button).click();
+        ElementActions.click(driver,confirm_Button);
+//        driver.findElement(confirm_Button).click();
     }
     public void clickViewObservationInActionStated()
     {
-        driver.findElement(actionsObservation_Button).click();
-        driver.findElement(viewOptionsAction_Button).click();
+        ElementActions.click(driver,actionsObservation_Button);
+//        driver.findElement(actionsObservation_Button).click();
+        ElementActions.click(driver,viewOptionsAction_Button);
+//        driver.findElement(viewOptionsAction_Button).click();
 
     }
 
     public void clickEditObservationByHSE()
     {
         clickViewingDropDown();
-        driver.findElement(viewingAsHSERepNoActionStated_Button).click();
-        driver.findElement(actionsObservation_Button).click();
-        driver.findElement(editOptionsAction_Button).click();
+        ElementActions.click(driver,viewingAsHSERepNoActionStated_Button);
+//        driver.findElement(viewingAsHSERepNoActionStated_Button).click();
+        ElementActions.click(driver,actionsObservation_Button);
+//        driver.findElement(actionsObservation_Button).click();
+        ElementActions.click(driver,editOptionsAction_Button);
+//        driver.findElement(editOptionsAction_Button).click();
 
     }
     public void clickNoActionStatedButton()
     {
-        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(noActionStated_Button))).click();
+        ElementActions.click(driver,noActionStated_Button);
+//        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(noActionStated_Button))).click();
 
     }
 
@@ -239,7 +277,8 @@ public class HomePage {
     public void validatePositiveObservationCreated()
     {
         clickViewingDropDown();
-        driver.findElement(viewingAsCreatorNoActionStated_button).click();
+        ElementActions.click(driver,viewingAsCreatorNoActionStated_button);
+//        driver.findElement(viewingAsCreatorNoActionStated_button).click();
         Assert.assertEquals("Positive Observation", driver.findElement(observationStatus_Label).getText());
     }
     public void validatePositiveObservationMoveToActionStated()
@@ -255,22 +294,31 @@ public class HomePage {
         actions.scrollByAmount(0, -200).perform();
 
 
-        driver.findElement(observationActionStated_Button).click();
+        ElementActions.click(driver,observationActionStated_Button);
+//        driver.findElement(observationActionStated_Button).click();
         clickViewingDropDown();
-        driver.findElement(viewingAsHSERepActionStated_Button).click();
-        driver.findElement(actionsObservation_Button).click();
-        driver.findElement(viewOptionsAction_Button).click();
+        ElementActions.click(driver,viewingAsHSERepActionStated_Button);
+//        driver.findElement(viewingAsHSERepActionStated_Button).click();
+        ElementActions.click(driver,actionsObservation_Button);
+//        driver.findElement(actionsObservation_Button).click();
+        ElementActions.click(driver,viewOptionsAction_Button);
+//        driver.findElement(viewOptionsAction_Button).click();
         Assert.assertEquals("Positive Observation", driver.findElement(viewingObservationStatus_Label).getText());
-        driver.findElement(closeObservation_Button).click();
+        ElementActions.click(driver,closeObservation_Button);
+//        driver.findElement(closeObservation_Button).click();
     }
     public void validateCreatorCanViewPositiveObservationInActionStated()
     {
         clickViewingDropDown();
-        driver.findElement(viewinAsCreatorActionStated_Button).click();
-        driver.findElement(actionsObservation_Button).click();
-        driver.findElement(viewOptionsAction_Button).click();
+        ElementActions.click(driver,viewinAsCreatorActionStated_Button);
+//        driver.findElement(viewinAsCreatorActionStated_Button).click();
+        ElementActions.click(driver,actionsObservation_Button);
+//        driver.findElement(actionsObservation_Button).click();
+        ElementActions.click(driver,viewOptionsAction_Button);
+//        driver.findElement(viewOptionsAction_Button).click();
         Assert.assertEquals("Positive Observation", driver.findElement(viewingObservationStatus_Label).getText());
-        driver.findElement(closeObservation_Button).click();
+        ElementActions.click(driver,closeObservation_Button);
+//        driver.findElement(closeObservation_Button).click();
     }
     public void validateUnSafeObservationCreatedOrUpdated()
     {
@@ -280,7 +328,8 @@ public class HomePage {
             throw new RuntimeException(e);
         }
         clickViewingDropDown();
-        driver.findElement(viewingAsHSERepNoActionStated_Button).click();
+        ElementActions.click(driver,viewingAsHSERepNoActionStated_Button);
+//        driver.findElement(viewingAsHSERepNoActionStated_Button).click();
         Assert.assertEquals("Draft", driver.findElement(observationStatus_Label).getText());
     }
     public void validateObservationStatusClarificationNeeded()
@@ -305,23 +354,31 @@ public class HomePage {
         }
         actions.scrollByAmount(0, -200).perform();
 
-
-        driver.findElement(observationActionStated_Button).click();
+        ElementActions.click(driver,observationActionStated_Button);
+//        driver.findElement(observationActionStated_Button).click();
         clickViewingDropDown();
-        driver.findElement(viewingAsHSERepActionStated_Button).click();
-        driver.findElement(actionsObservation_Button).click();
-        driver.findElement(viewOptionsAction_Button).click();
+        ElementActions.click(driver,viewingAsHSERepActionStated_Button);
+//        driver.findElement(viewingAsHSERepActionStated_Button).click();
+        ElementActions.click(driver,actionsObservation_Button);
+//        driver.findElement(actionsObservation_Button).click();
+        ElementActions.click(driver,viewOptionsAction_Button);
+//        driver.findElement(viewOptionsAction_Button).click();
         Assert.assertEquals("No Action Required", driver.findElement(viewingObservationStatus_Label).getText());
-        driver.findElement(closeObservation_Button).click();
+        ElementActions.click(driver,closeObservation_Button);
+//        driver.findElement(closeObservation_Button).click();
     }
     public void validateCreatorCanViewNoActionRequiredObservationInActionStated()
     {
         clickViewingDropDown();
-        driver.findElement(viewinAsCreatorActionStated_Button).click();
-        driver.findElement(actionsObservation_Button).click();
-        driver.findElement(viewOptionsAction_Button).click();
+        ElementActions.click(driver,viewinAsCreatorActionStated_Button);
+//        driver.findElement(viewinAsCreatorActionStated_Button).click();
+        ElementActions.click(driver,actionsObservation_Button);
+//        driver.findElement(actionsObservation_Button).click();
+        ElementActions.click(driver,viewOptionsAction_Button);
+//        driver.findElement(viewOptionsAction_Button).click();
         Assert.assertEquals("No Action Required", driver.findElement(viewingObservationStatus_Label).getText());
-        driver.findElement(closeObservation_Button).click();
+        ElementActions.click(driver,closeObservation_Button);
+//        driver.findElement(closeObservation_Button).click();
     }
 
     public void validateObservationStatusNeedCommitteFeedBack()
@@ -352,12 +409,15 @@ public class HomePage {
         }
         actions.scrollByAmount(0, -200).perform();
 
-
-        driver.findElement(observationActionStated_Button).click();
+        ElementActions.click(driver,observationActionStated_Button);
+//        driver.findElement(observationActionStated_Button).click();
         clickViewingDropDown();
-        driver.findElement(viewingAsHSERepActionStated_Button).click();
-        driver.findElement(actionsObservation_Button).click();
-        driver.findElement(viewOptionsAction_Button).click();
+        ElementActions.click(driver,viewingAsHSERepActionStated_Button);
+//        driver.findElement(viewingAsHSERepActionStated_Button).click();
+        ElementActions.click(driver,actionsObservation_Button);
+//        driver.findElement(actionsObservation_Button).click();
+        ElementActions.click(driver,viewOptionsAction_Button);
+//        driver.findElement(viewOptionsAction_Button).click();
         Assert.assertEquals("Closed With Immediate Action", driver.findElement(viewingObservationStatus_Label).getText());
         driver.findElement(closeObservation_Button).click();
     }
@@ -365,11 +425,15 @@ public class HomePage {
     public void validateCreatorCanViewClosedWithImmediateActionInActionStated()
     {
         clickViewingDropDown();
-        driver.findElement(viewinAsCreatorActionStated_Button).click();
-        driver.findElement(actionsObservation_Button).click();
-        driver.findElement(viewOptionsAction_Button).click();
+        ElementActions.click(driver,viewinAsCreatorActionStated_Button);
+//        driver.findElement(viewinAsCreatorActionStated_Button).click();
+        ElementActions.click(driver,actionsObservation_Button);
+//        driver.findElement(actionsObservation_Button).click();
+        ElementActions.click(driver,viewOptionsAction_Button);
+//        driver.findElement(viewOptionsAction_Button).click();
         Assert.assertEquals("Closed With Immediate Action", driver.findElement(viewingObservationStatus_Label).getText());
-        driver.findElement(closeObservation_Button).click();
+        ElementActions.click(driver,closeObservation_Button);
+//        driver.findElement(closeObservation_Button).click();
     }
     public void validateActionInProgressMovetoActionStated()
     {
@@ -383,23 +447,31 @@ public class HomePage {
         }
         actions.scrollByAmount(0, -300).perform();
 
-
-        driver.findElement(observationActionStated_Button).click();
+        ElementActions.click(driver,observationActionStated_Button);
+//        driver.findElement(observationActionStated_Button).click();
         clickViewingDropDown();
-        driver.findElement(viewingAsHSERepActionStated_Button).click();
-        driver.findElement(actionsObservation_Button).click();
-        driver.findElement(viewOptionsAction_Button).click();
+        ElementActions.click(driver,viewingAsHSERepActionStated_Button);
+//        driver.findElement(viewingAsHSERepActionStated_Button).click();
+        ElementActions.click(driver,actionsObservation_Button);
+//        driver.findElement(actionsObservation_Button).click();
+        ElementActions.click(driver,viewOptionsAction_Button);
+//        driver.findElement(viewOptionsAction_Button).click();
         Assert.assertEquals("Action In Progress", driver.findElement(viewingObservationStatus_Label).getText());
-        driver.findElement(closeObservation_Button).click();
+        ElementActions.click(driver,closeObservation_Button);
+//        driver.findElement(closeObservation_Button).click();
     }
     public void validateCreatorCanViewActionInProgressInActionStated()
     {
         clickViewingDropDown();
-        driver.findElement(viewinAsCreatorActionStated_Button).click();
-        driver.findElement(actionsObservation_Button).click();
-        driver.findElement(viewOptionsAction_Button).click();
+        ElementActions.click(driver,viewinAsCreatorActionStated_Button);
+//        driver.findElement(viewinAsCreatorActionStated_Button).click();
+        ElementActions.click(driver,actionsObservation_Button);
+//        driver.findElement(actionsObservation_Button).click();
+        ElementActions.click(driver,viewOptionsAction_Button);
+//        driver.findElement(viewOptionsAction_Button).click();
         Assert.assertEquals("Action In Progress", driver.findElement(viewingObservationStatus_Label).getText());
-        driver.findElement(closeObservation_Button).click();
+        ElementActions.click(driver,closeObservation_Button);
+//        driver.findElement(closeObservation_Button).click();
     }
     public void validateObservationStatusIsOwnerDeptFeedbackRequired()
     {
@@ -419,11 +491,15 @@ public class HomePage {
     public void validateHSECanViewNoActionRequiredObservationInActionStated()
     {
         clickViewingDropDown();
-        driver.findElement(viewingAsHSERepActionStated_Button).click();
-        driver.findElement(actionsObservation_Button).click();
-        driver.findElement(viewOptionsAction_Button).click();
+        ElementActions.click(driver,viewingAsHSERepActionStated_Button);
+//        driver.findElement(viewingAsHSERepActionStated_Button).click();
+        ElementActions.click(driver,actionsObservation_Button);
+//        driver.findElement(actionsObservation_Button).click();
+        ElementActions.click(driver,viewOptionsAction_Button);
+//        driver.findElement(viewOptionsAction_Button).click();
         Assert.assertEquals("No Action Required", driver.findElement(viewingObservationStatus_Label).getText());
-        driver.findElement(closeObservation_Button).click();
+        ElementActions.click(driver,closeObservation_Button);
+//        driver.findElement(closeObservation_Button).click();
     }
 
 

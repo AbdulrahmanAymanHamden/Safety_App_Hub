@@ -3,7 +3,6 @@ package E2E;
 import Base.TestBase;
 import Pages.HomePage;
 import Pages.ObservationsPage;
-import Utilities.JsonReader;
 import org.testng.annotations.Test;
 import Pages.LoginPage;
 
@@ -27,7 +26,7 @@ public class PositiveObservation extends TestBase {
         homePage.addComfirmPostiveObservationAction();
         homePage.validatePositiveObservationMoveToActionStated();
         homePage.validateCreatorCanViewPositiveObservationInActionStated();
-        homePage.logingOut();
+        homePage.logOut();
 
     }
 }
