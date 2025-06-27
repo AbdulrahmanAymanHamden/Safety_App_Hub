@@ -47,11 +47,6 @@ public class LoginPage {
         ElementActions.type(driver , password_TextBox , password);
         ElementActions.click(driver , login_Button);
 
-//        driver.findElement(companyId_TextBox).sendKeys(companyID);
-//        driver.findElement(companyLogin_Button).click();
-//        driver.findElement(email_TextBox).sendKeys(email);
-//        driver.findElement(password_TextBox).sendKeys(password);
-//        driver.findElement(login_Button).click();
     }
 
     // Assertions (add your own if needed)

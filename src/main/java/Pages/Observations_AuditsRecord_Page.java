@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-public class ObservationsPage {
+public class Observations_AuditsRecord_Page {
 
     WebDriver driver;
     WebDriverWait wait;
@@ -22,7 +22,7 @@ public class ObservationsPage {
 
 
 
-    public ObservationsPage(WebDriver driver) {
+    public Observations_AuditsRecord_Page(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions =new Actions(driver);
@@ -54,6 +54,18 @@ public class ObservationsPage {
     private final By observationType_Label = By.xpath("/html/body/div[1]/div[1]/div[1]/div/div/div[1]/div[2]/div[3]/div/div/div/div[2]/div[4]/div[2]/div/table/tbody/tr[1]/td[6]/div/span");
     private final By editObservationTitle_Label = By.xpath("//*[@id=\"my-modal\"]/div/div[2]/div/table/tbody/tr[2]/td[2]/div");
     private final By closeSaftyObservation_Button = By.xpath("//button[@class=\"btn-close\"]");
+    private final By externalAudit_Selection = By.xpath("//input[@value=\"external\"]");
+    private final By selectAuditor_Selection =By.id("react-select-6-input");
+    private final By selectAuditType_Selection = By.id("react-select-7-input");
+    private final By auditDetails_TextBox = By.xpath("//*[@id=\"rc-dyn-tabs-p-1\"]/form/div[3]/div[3]/div/div/div[2]/div[1]/p");
+    private final By noFindings_Selection = By.xpath("//input[@value=\"no\"]");
+    private final By submitTypeSubmit_Button = By.xpath("//button[@type=\"submit\"]");
+    private final By auditRecordsList_Button = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div/div[2]/div[3]/div/div/div/div[1]/button[1]/span[2]");
+    private final By findings_Selection = By.xpath("//input[@value=\"yes\"]");
+    private final By findings_TextBox = By.id("findings.0.finding");
+    private final By ownerDepartment_TextBox = By.id("react-select-8-input");
+    private final By suggestion_Textbox = By.id("findings.0.suggestion");
+
 
 
 
@@ -68,19 +80,14 @@ public class ObservationsPage {
         }
         actions.scrollByAmount(0, -300).perform();
         ElementActions.click(driver,addObservations_Button);
-//        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(addObservations_Button))).click();
     }
 
-    public void createObservation()
+    public void create_Observation_Audit()
     {
         ElementActions.click(driver,date_Input);
-//        driver.findElement(date_Input).click();
         ElementActions.click(driver,dateSelected_Selection);
-//        driver.findElement(dateSelected_Selection).click();
         ElementActions.type(driver,observationDuration_TextBox,"5");
-//        driver.findElement(observationDuration_TextBox).sendKeys("5");
         ElementActions.type(driver,shift_Selection,"night");
-//        driver.findElement(shift_Selection).sendKeys("night");
 
         try {
             Thread.sleep(1000);
@@ -89,9 +96,7 @@ public class ObservationsPage {
         }
         actions.sendKeys(Keys.ENTER).perform();
         ElementActions.click(driver,time_Selection);
-//        driver.findElement(time_Selection).click();
         ElementActions.type(driver,branch_Selection,"Cairo branch");
-//        driver.findElement(branch_Selection).sendKeys("Cairo branch");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -104,7 +109,6 @@ public class ObservationsPage {
             throw new RuntimeException(e);
         }
         ElementActions.type(driver,mainArea_Selection,"main");
-//        driver.findElement(mainArea_Selection).sendKeys("main");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -117,7 +121,6 @@ public class ObservationsPage {
             throw new RuntimeException(e);
         }
         ElementActions.type(driver,subArea_Selection,"sub");
-//        driver.findElement(subArea_Selection).sendKeys("sub");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -129,114 +132,108 @@ public class ObservationsPage {
     public void creatPositiveObservation()
     {
         ElementActions.click(driver,positiveObservation_Selection);
-//        driver.findElement(positiveObservation_Selection).click();
         ElementActions.type(driver,observationTitle_TextBox,"AutomationTest");
-//        driver.findElement(observationTitle_TextBox).sendKeys("AutomationTest");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         ElementActions.type(driver,observationDetails_TextBox,"AutomationTest");
-//        driver.findElement(observationDetails_TextBox).sendKeys("AutomationTest");
         ElementActions.click(driver,hasAction_Yes_Selection);
-//        driver.findElement(hasAction_Yes_Selection).click();
         ElementActions.click(driver,hasDiscussion_Yes_Selection);
-//        driver.findElement(hasDiscussion_Yes_Selection).click();
         ElementActions.click(driver,submit_Button);
-//        driver.findElement(submit_Button).click();
         ElementActions.click(driver,confirm_Button);
-//        driver.findElement(confirm_Button).click();
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         ElementActions.click(driver,observationList_Button);
-//        driver.findElement(observationList_Button).click();
     }
 
     public void creatUnsafeActObservation()
     {
         ElementActions.click(driver,unSafeActObservation_Selection);
-//        driver.findElement(unSafeActObservation_Selection).click();
         ElementActions.type(driver,observationTitle_TextBox,"Automation Test");
-//        driver.findElement(observationTitle_TextBox).sendKeys("Automation Test");
         ElementActions.click(driver,unSafeOptions_Selection);
-//        driver.findElement(unSafeOptions_Selection).click();
         ElementActions.type(driver,observationDetails_TextBox,"Automation Test");
-//        driver.findElement(observationDetails_TextBox).sendKeys("Automation Test");
         ElementActions.click(driver,hasAction_Yes_Selection);
-//        driver.findElement(hasAction_Yes_Selection).click();
         ElementActions.click(driver,hasDiscussion_Yes_Selection);
-//        driver.findElement(hasDiscussion_Yes_Selection).click();
         ElementActions.click(driver,submit_Button);
-//        driver.findElement(submit_Button).click();
         ElementActions.click(driver,confirm_Button);
-//        driver.findElement(confirm_Button).click();
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         ElementActions.click(driver,observationList_Button);
-//        wait.until(ExpectedConditions.elementToBeClickable(observationList_Button)).click();
     }
     public void makeClarificationCreator()
     {
         ElementActions.type(driver,editObservationDetails_TextBox,"clarification");
-//        driver.findElement(editObservationDetails_TextBox).sendKeys("clarification");
         ElementActions.click(driver,submit_Button);
-//        driver.findElement(submit_Button).click();
         ElementActions.click(driver,confirm_Button);
-//        driver.findElement(update_Button).click();
     }
 
     public void creatUnsafeConditionObservation()
     {
         ElementActions.click(driver,unSafeConditionObservation_Selection);
-//        driver.findElement(unSafeConditionObservation_Selection).click();
         ElementActions.type(driver,observationTitle_TextBox,"Automation Test");
-//        driver.findElement(observationTitle_TextBox).sendKeys("Automation Test");
         ElementActions.click(driver,unSafeOptions_Selection);
-//        driver.findElement(unSafeOptions_Selection).click();
         ElementActions.type(driver,observationDetails_TextBox,"Automation Test");
-//        driver.findElement(observationDetails_TextBox).sendKeys("Automation Test");
         ElementActions.click(driver,hasAction_Yes_Selection);
-//        driver.findElement(hasAction_Yes_Selection).click();
         ElementActions.click(driver,hasDiscussion_Yes_Selection);
-//        driver.findElement(hasDiscussion_Yes_Selection).click();
         ElementActions.click(driver,submit_Button);
-//        driver.findElement(submit_Button).click();
         ElementActions.click(driver,confirm_Button);
-//        driver.findElement(confirm_Button).click();
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         ElementActions.click(driver,observationList_Button);
-//        wait.until(ExpectedConditions.elementToBeClickable(observationList_Button)).click();
     }
 
     public void editByCreatorInObservationPage()
     {
         ElementActions.type(driver,observationTitle_TextBox,"edit by creator");
-//        driver.findElement(observationTitle_TextBox).sendKeys("edit by creator");
         ElementActions.click(driver,submit_Button);
-//        driver.findElement(submit_Button).click();
         ElementActions.click(driver,confirm_Button);
-//        driver.findElement(update_Button).click();
     }
     public void editObservationByHSE()
     {
         ElementActions.type(driver,observationTitle_TextBox," edit by HSE");
-//        driver.findElement(observationTitle_TextBox).clear();
-//        driver.findElement(observationTitle_TextBox).sendKeys(" edit by HSE");
         ElementActions.click(driver,submit_Button);
-//        driver.findElement(submit_Button).click();
         ElementActions.click(driver,confirm_Button);
-//        driver.findElement(update_Button).click();
+    }
+
+    public void creatExternalAudit()
+    {
+        ElementActions.click(driver,externalAudit_Selection);
+        ElementActions.type(driver,selectAuditor_Selection,"hg");
+        actions.sendKeys(Keys.ENTER).perform();
+        ElementActions.type(driver,selectAuditType_Selection,"eee");
+        actions.sendKeys(Keys.ENTER).perform();
+        ElementActions.type(driver,auditDetails_TextBox,"Automation Test");
+
+    }
+    public void selectNoFindings()
+    {
+        ElementActions.click(driver,noFindings_Selection);
+        ElementActions.click(driver,submitTypeSubmit_Button);
+        ElementActions.click(driver,confirm_Button);
+        ElementActions.click(driver,auditRecordsList_Button);
+    }
+    public void selectFindingsDeteced()
+    {
+        ElementActions.click(driver,findings_Selection);
+        ElementActions.type(driver,findings_TextBox,"Test");
+        ElementActions.type(driver,ownerDepartment_TextBox,"human");
+        actions.sendKeys(Keys.ENTER).perform();
+        ElementActions.type(driver,suggestion_Textbox,"Test");
+        ElementActions.click(driver,submitTypeSubmit_Button);
+        ElementActions.click(driver,confirm_Button);
+        ElementActions.click(driver,auditRecordsList_Button);
+
     }
 
 

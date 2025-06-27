@@ -1,9 +1,9 @@
-package E2E;
+package E2EObservation;
 
 import Base.TestBase;
 import Pages.HomePage;
 import Pages.LoginPage;
-import Pages.ObservationsPage;
+import Pages.Observations_AuditsRecord_Page;
 import org.testng.annotations.Test;
 
 public class UnSafeActObservation extends TestBase {
@@ -14,20 +14,20 @@ public class UnSafeActObservation extends TestBase {
 
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-        ObservationsPage observationsPage = new ObservationsPage(driver);
+        Observations_AuditsRecord_Page observationsAuditsRecordPage = new Observations_AuditsRecord_Page(driver);
 
         loginPage.login();
         loginPage.validateLoginSuccess();
         homePage.clickObservations();
-        observationsPage.clickAddObservations();
-        observationsPage.createObservation();
-        observationsPage.creatUnsafeActObservation();
+        observationsAuditsRecordPage.clickAddObservations();
+        observationsAuditsRecordPage.create_Observation_Audit();
+        observationsAuditsRecordPage.creatUnsafeActObservation();
         homePage.validateUnSafeObservationCreatedOrUpdated();
         homePage.addHSERepAction();
         homePage.addClarificationNeededfromCreatorAction();
         homePage.validateObservationStatusClarificationNeeded();
         homePage.editObservationByCreator();
-        observationsPage.makeClarificationCreator();
+        observationsAuditsRecordPage.makeClarificationCreator();
         homePage.validateUnSafeObservationCreatedOrUpdated();
         homePage.addHSERepAction();
         homePage.addcloseAndNoActionRequiredAction();
@@ -43,14 +43,14 @@ public class UnSafeActObservation extends TestBase {
     {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-        ObservationsPage observationsPage = new ObservationsPage(driver);
+        Observations_AuditsRecord_Page observationsAuditsRecordPage = new Observations_AuditsRecord_Page(driver);
 
         loginPage.login();
         loginPage.validateLoginSuccess();
         homePage.clickObservations();
-        observationsPage.clickAddObservations();
-        observationsPage.createObservation();
-        observationsPage.creatUnsafeActObservation();
+        observationsAuditsRecordPage.clickAddObservations();
+        observationsAuditsRecordPage.create_Observation_Audit();
+        observationsAuditsRecordPage.creatUnsafeActObservation();
         homePage.validateUnSafeObservationCreatedOrUpdated();
         homePage.addHSERepAction();
         homePage.addCommitteFeedBackAction();
@@ -66,14 +66,14 @@ public class UnSafeActObservation extends TestBase {
     {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-        ObservationsPage observationsPage = new ObservationsPage(driver);
+        Observations_AuditsRecord_Page observationsAuditsRecordPage = new Observations_AuditsRecord_Page(driver);
 
         loginPage.login();
         loginPage.validateLoginSuccess();
         homePage.clickObservations();
-        observationsPage.clickAddObservations();
-        observationsPage.createObservation();
-        observationsPage.creatUnsafeActObservation();
+        observationsAuditsRecordPage.clickAddObservations();
+        observationsAuditsRecordPage.create_Observation_Audit();
+        observationsAuditsRecordPage.creatUnsafeActObservation();
         homePage.validateUnSafeObservationCreatedOrUpdated();
         homePage.addHSERepAction();
         homePage.addClosedWithImmediateAction();
@@ -88,14 +88,14 @@ public class UnSafeActObservation extends TestBase {
     {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-        ObservationsPage observationsPage = new ObservationsPage(driver);
+        Observations_AuditsRecord_Page observationsAuditsRecordPage = new Observations_AuditsRecord_Page(driver);
 
         loginPage.login();
         loginPage.validateLoginSuccess();
         homePage.clickObservations();
-        observationsPage.clickAddObservations();
-        observationsPage.createObservation();
-        observationsPage.creatUnsafeActObservation();
+        observationsAuditsRecordPage.clickAddObservations();
+        observationsAuditsRecordPage.create_Observation_Audit();
+        observationsAuditsRecordPage.creatUnsafeActObservation();
         homePage.validateUnSafeObservationCreatedOrUpdated();
         homePage.addHSERepAction();
         homePage.addActionByHSEAction();
@@ -110,14 +110,14 @@ public class UnSafeActObservation extends TestBase {
     {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-        ObservationsPage observationsPage = new ObservationsPage(driver);
+        Observations_AuditsRecord_Page observationsAuditsRecordPage = new Observations_AuditsRecord_Page(driver);
 
         loginPage.login();
         loginPage.validateLoginSuccess();
         homePage.clickObservations();
-        observationsPage.clickAddObservations();
-        observationsPage.createObservation();
-        observationsPage.creatUnsafeActObservation();
+        observationsAuditsRecordPage.clickAddObservations();
+        observationsAuditsRecordPage.create_Observation_Audit();
+        observationsAuditsRecordPage.creatUnsafeActObservation();
         homePage.validateUnSafeObservationCreatedOrUpdated();
         homePage.addHSERepAction();
         homePage.addOwnerDepartmentFeedBackRequired();

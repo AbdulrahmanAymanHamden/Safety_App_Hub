@@ -4,9 +4,9 @@
 
     <test name="TestProject">
         <classes>
-            <class name="E2E.PositiveObservation" />
-            <class name="E2E.UnSafeActObservation" />
-            <class name="E2E.UnSafeCondition" />
+            <class name="E2EObservation.PositiveObservation" />
+            <class name="E2EObservation.UnSafeActObservation" />
+            <class name="E2EObservation.UnSafeCondition" />
         </classes>
     </test>
 
