@@ -65,6 +65,7 @@ public class Observations_AuditsRecord_Page {
     private final By findings_TextBox = By.id("findings.0.finding");
     private final By ownerDepartment_TextBox = By.id("react-select-8-input");
     private final By suggestion_Textbox = By.id("findings.0.suggestion");
+    private final By internalAudit_Selection = By.xpath("//input[@value=\"internal\"]");
 
 
 
@@ -233,6 +234,16 @@ public class Observations_AuditsRecord_Page {
         ElementActions.click(driver,submitTypeSubmit_Button);
         ElementActions.click(driver,confirm_Button);
         ElementActions.click(driver,auditRecordsList_Button);
+
+    }
+    public void creatInternalAudit()
+    {
+        ElementActions.click(driver,internalAudit_Selection);
+        ElementActions.type(driver,selectAuditor_Selection,"ali");
+        actions.sendKeys(Keys.ENTER).perform();
+        ElementActions.type(driver,selectAuditType_Selection,"rrr");
+        actions.sendKeys(Keys.ENTER).perform();
+        ElementActions.type(driver,auditDetails_TextBox,"Automation Test");
 
     }
 
