@@ -78,21 +78,21 @@ public class HomePage {
     private final By findingsView_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[10]/div/span/div");
     private final By findingsFinding_Label = By.xpath("//*[@id=\"my-modal\"]/div/div[2]/div/div/div/div/div/span[1]");
     private final By findingsNoActionStated_Button = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div/div[2]/div[3]/div/ul/li[2]/a/div/div[2]");
-    private final By lastPage_Button = By.xpath("//*[@id='root']/div[1]/div[1]/div/div/div[1]/div[2]/div[3]/div/div/div/div/div[4]/div[3]/div/ul/li[last()-1]/a");
-    private final By lastActionsAudit_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[last()]/td[10]/div/div/div[1]\n");
+//    private final By lastPage_Button = By.xpath("//*[@id='root']/div[1]/div[1]/div/div/div[1]/div[2]/div[3]/div/div/div/div/div[4]/div[3]/div/ul/li[last()-1]/a");
+    private final By actionsAudit_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr/td[10]/div/div/div[1]");
     private final By viewingAsHSERepFindings_Button = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div/div[2]/div[3]/div/div/div/div/div[1]/div/div/div/div/button[3]");
-    private final By addHSEActionAudit_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[last()]/td[10]/div/div/div[2]/div/button");
-    private final By closeAndNoActionRequiredAudit_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[last()]/td[10]/div/div/div[2]/div/div/button[1]/div/span");
+    private final By addHSEActionAudit_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[10]/div/div/div[2]/div/button");
+    private final By closeAndNoActionRequiredAudit_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[10]/div/div/div[2]/div/div/button[1]/div/span");
     private final By findingActionStated_Button = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div/div[2]/div[3]/div/ul/li[3]");
-    private final By viewOptionsActionAudit_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[last()]/td[10]/div/div/div[2]/button\n");
+    private final By viewOptionsActionAudit_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[10]/div/div/div[2]/button");
     private final By statusAudit_Label = By.xpath("/html/body/div[2]/div/div[1]/div/div/div[2]/div/table/tbody/tr[8]/td[2]/div/span/div/div/span");
-    private final By closedWithImmedidateActionAudit_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[last()]/td[10]/div/div/div[2]/div/div/button[2]/div/span\n");
+    private final By closedWithImmedidateActionAudit_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[10]/div/div/div[2]/div/div/button[2]/div/span");
     private final By immediateAction_TextBox = By.xpath("//input[@placeholder=\"Immediate Action\"]");
-    private final By actionImmediatly_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[last()]/td[10]/div/div/div[2]/div/div/button[3]/div\n");
+    private final By actionImmediatly_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[10]/div/div/div[2]/div/div/button[3]/div/span");
     private final By enterActionImmediatly_TextBox = By.xpath("//textarea[@name=\"actions.0.action_details\"]");
     private final By responsibleDepartments_TextBox = By.xpath("//*[@id=\"react-select-11-input\"]");
     private final By pirorityAudit_Selection = By.xpath("//*[@id=\"react-select-9-input\"]");
-    private final By neededCommitteFeedBackAuditAction_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[last()]/td[10]/div/div/div[2]/div/div/button[4]/div/span\n");
+    private final By neededCommitteFeedBackAuditAction_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[10]/div/div/div[2]/div/div/button[4]/div/span");
     private final By findingsNoActionStatedstatus_Label = By.xpath("/html/body/div/div[1]/div[1]/div/div/div[1]/div[2]/div[3]/div/div/div/div/div[4]/div[2]/div/table/tbody/tr[last()]/td[9]/div/div[1]/span\n");
 
 
@@ -259,13 +259,12 @@ public class HomePage {
     {
         clickViewingDropDown();
         ElementActions.click(driver, viewingAsHSERepFindings_Button);
-        ElementActions.click(driver,lastPage_Button);
+        ElementActions.click(driver,actionsAudit_Button);
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        ElementActions.click(driver,lastActionsAudit_Button);
         ElementActions.click(driver,addHSEActionAudit_Button);
     }
     public void addcloseAndNoActionRequiredAction_Audit()
@@ -548,13 +547,12 @@ public class HomePage {
         ElementActions.click(driver,findingActionStated_Button);
         clickViewingDropDown();
         ElementActions.click(driver,viewingAsHSERepFindings_Button);
-        ElementActions.click(driver,lastPage_Button);
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        ElementActions.click(driver,lastActionsAudit_Button);
+        ElementActions.click(driver, actionsAudit_Button);
         ElementActions.click(driver,viewOptionsActionAudit_Button);
         try {
             Thread.sleep(1000);
@@ -577,13 +575,13 @@ public class HomePage {
         ElementActions.click(driver,findingActionStated_Button);
         clickViewingDropDown();
         ElementActions.click(driver,viewingAsHSERepFindings_Button);
-        ElementActions.click(driver,lastPage_Button);
+//        ElementActions.click(driver,lastPage_Button);
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        ElementActions.click(driver,lastActionsAudit_Button);
+        ElementActions.click(driver, actionsAudit_Button);
         ElementActions.click(driver,viewOptionsActionAudit_Button);
         try {
             Thread.sleep(1000);
@@ -605,13 +603,13 @@ public class HomePage {
         ElementActions.click(driver,findingActionStated_Button);
         clickViewingDropDown();
         ElementActions.click(driver,viewingAsHSERepFindings_Button);
-        ElementActions.click(driver,lastPage_Button);
+//        ElementActions.click(driver,lastPage_Button);
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        ElementActions.click(driver,lastActionsAudit_Button);
+        ElementActions.click(driver, actionsAudit_Button);
         ElementActions.click(driver,viewOptionsActionAudit_Button);
         try {
             Thread.sleep(1000);

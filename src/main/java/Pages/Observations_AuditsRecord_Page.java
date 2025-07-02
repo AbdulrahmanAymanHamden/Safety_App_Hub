@@ -97,7 +97,7 @@ public class Observations_AuditsRecord_Page {
         }
         actions.sendKeys(Keys.ENTER).perform();
         ElementActions.click(driver,time_Selection);
-        ElementActions.type(driver,branch_Selection,"Cairo branch");
+        ElementActions.type(driver,branch_Selection,"Automation Test");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -109,7 +109,7 @@ public class Observations_AuditsRecord_Page {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        ElementActions.type(driver,mainArea_Selection,"main");
+        ElementActions.type(driver,mainArea_Selection,"Automation Test");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -121,7 +121,7 @@ public class Observations_AuditsRecord_Page {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        ElementActions.type(driver,subArea_Selection,"sub");
+        ElementActions.type(driver,subArea_Selection,"Automation Test");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -210,9 +210,10 @@ public class Observations_AuditsRecord_Page {
     public void creatExternalAudit()
     {
         ElementActions.click(driver,externalAudit_Selection);
-        ElementActions.type(driver,selectAuditor_Selection,"hg");
+//        ElementActions.type(driver,selectAuditor_Selection,"ِAutomation Test");
+        ElementActions.click(driver,selectAuditor_Selection);
         actions.sendKeys(Keys.ENTER).perform();
-        ElementActions.type(driver,selectAuditType_Selection,"eee");
+        ElementActions.type(driver,selectAuditType_Selection,"Automation Test");
         actions.sendKeys(Keys.ENTER).perform();
         ElementActions.type(driver,auditDetails_TextBox,"Automation Test");
 
