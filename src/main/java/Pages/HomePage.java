@@ -95,6 +95,10 @@ public class HomePage {
     private final By neededCommitteFeedBackAuditAction_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[10]/div/div/div[2]/div/div/button[4]/div/span");
     private final By findingsNoActionStatedstatus_Label = By.xpath("/html/body/div/div[1]/div[1]/div/div/div[1]/div[2]/div[3]/div/div/div/div/div[4]/div[2]/div/table/tbody/tr[last()]/td[9]/div/div[1]/span\n");
 
+    private final By managementReviews_Section = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div/div[1]/div[5]/ul/li[5]/a/span");
+    private final By meetingResult_Label = By.xpath("/html/body/div[1]/div[1]/div[1]/div/div/div[1]/div[2]/div[3]/div/div/div/div[2]/div[3]/div[2]/div/table/tbody/tr[1]/td[7]/div/div/span");
+
+
 
 
 
@@ -313,6 +317,11 @@ public class HomePage {
         ElementActions.click(driver, neededCommitteFeedBackAuditAction_Button);
         ElementActions.click(driver, submitTypeSubmit_Button);
         ElementActions.click(driver, confirm_Button);
+    }
+
+    public void clickManagementReiews()
+    {
+        ElementActions.click(driver,managementReviews_Section);
     }
 
 
@@ -629,6 +638,11 @@ public class HomePage {
         }
         Assert.assertEquals(driver.findElement(findingsNoActionStatedstatus_Label).getText(),"Need Committee Feedback");
 
+    }
+
+    public void validateNoActionMeetingReviewCreated()
+    {
+        Assert.assertEquals(driver.findElement(meetingResult_Label).getText(),"No Actions Required");
     }
 
 

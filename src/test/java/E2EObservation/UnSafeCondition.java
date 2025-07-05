@@ -3,7 +3,7 @@ package E2EObservation;
 import Base.TestBase;
 import Pages.HomePage;
 import Pages.LoginPage;
-import Pages.Observations_AuditsRecord_Page;
+import Pages.Observations_AuditsRecord_ManagementReview_Page;
 import org.testng.annotations.Test;
 
 public class UnSafeCondition extends TestBase {
@@ -15,7 +15,7 @@ public class UnSafeCondition extends TestBase {
 
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-        Observations_AuditsRecord_Page observationsAuditsRecordPage = new Observations_AuditsRecord_Page(driver);
+        Observations_AuditsRecord_ManagementReview_Page observationsAuditsRecordPage = new Observations_AuditsRecord_ManagementReview_Page(driver);
 
         loginPage.login();
         loginPage.validateLoginSuccess();
@@ -44,7 +44,7 @@ public class UnSafeCondition extends TestBase {
     {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-        Observations_AuditsRecord_Page observationsAuditsRecordPage = new Observations_AuditsRecord_Page(driver);
+        Observations_AuditsRecord_ManagementReview_Page observationsAuditsRecordPage = new Observations_AuditsRecord_ManagementReview_Page(driver);
 
         loginPage.login();
         loginPage.validateLoginSuccess();
@@ -65,7 +65,7 @@ public class UnSafeCondition extends TestBase {
     {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-        Observations_AuditsRecord_Page observationsAuditsRecordPage = new Observations_AuditsRecord_Page(driver);
+        Observations_AuditsRecord_ManagementReview_Page observationsAuditsRecordPage = new Observations_AuditsRecord_ManagementReview_Page(driver);
 
         loginPage.login();
         loginPage.validateLoginSuccess();
@@ -87,7 +87,7 @@ public class UnSafeCondition extends TestBase {
     {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-        Observations_AuditsRecord_Page observationsAuditsRecordPage = new Observations_AuditsRecord_Page(driver);
+        Observations_AuditsRecord_ManagementReview_Page observationsAuditsRecordPage = new Observations_AuditsRecord_ManagementReview_Page(driver);
 
         loginPage.login();
         loginPage.validateLoginSuccess();
@@ -109,7 +109,7 @@ public class UnSafeCondition extends TestBase {
     {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-        Observations_AuditsRecord_Page observationsAuditsRecordPage = new Observations_AuditsRecord_Page(driver);
+        Observations_AuditsRecord_ManagementReview_Page observationsAuditsRecordPage = new Observations_AuditsRecord_ManagementReview_Page(driver);
 
         loginPage.login();
         loginPage.validateLoginSuccess();

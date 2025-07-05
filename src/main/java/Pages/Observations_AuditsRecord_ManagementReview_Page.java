@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-public class Observations_AuditsRecord_Page {
+public class Observations_AuditsRecord_ManagementReview_Page {
 
     WebDriver driver;
     WebDriverWait wait;
@@ -22,7 +22,7 @@ public class Observations_AuditsRecord_Page {
 
 
 
-    public Observations_AuditsRecord_Page(WebDriver driver) {
+    public Observations_AuditsRecord_ManagementReview_Page(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions =new Actions(driver);
@@ -66,6 +66,12 @@ public class Observations_AuditsRecord_Page {
     private final By ownerDepartment_TextBox = By.id("react-select-8-input");
     private final By suggestion_Textbox = By.id("findings.0.suggestion");
     private final By internalAudit_Selection = By.xpath("//input[@value=\"internal\"]");
+
+    private final By addManagementReview_Button = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div/div[2]/div[3]/div/div/div/div[1]/button[2]");
+    private final By minutesOfMeeting_TextBox = By.xpath("//*[@id=\"rc-dyn-tabs-p-1\"]/form/div[3]/div/div/div[2]/div[1]/p");
+    private final By noActionRequired_Selection = By.xpath("//input[@value=\"no_actions_required\"]");
+    private final By managementReviewList_Button = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div/div[2]/div[3]/div/div/div/div[1]/button[1]/span[2]");
+
 
 
 
@@ -248,6 +254,67 @@ public class Observations_AuditsRecord_Page {
 
     }
 
+    public void creatManagementReview()
+    {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        ElementActions.click(driver,addManagementReview_Button);
+
+        ElementActions.click(driver,date_Input);
+        ElementActions.click(driver,dateSelected_Selection);
+        ElementActions.type(driver,observationDuration_TextBox,"5");
+        ElementActions.type(driver,shift_Selection,"night");
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        actions.sendKeys(Keys.ENTER).perform();
+        ElementActions.click(driver,time_Selection);
+        ElementActions.type(driver,branch_Selection,"Automation Test");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        actions.sendKeys(Keys.ENTER).perform();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        ElementActions.type(driver,mainArea_Selection,"Automation Test");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        actions.sendKeys(Keys.ENTER).perform();
+
+        ElementActions.type(driver,minutesOfMeeting_TextBox,"Test");
+    }
+    public void selectNoActionRequired()
+    {
+        ElementActions.click(driver,noActionRequired_Selection);
+        ElementActions.click(driver,submitTypeSubmit_Button);
+        ElementActions.click(driver,confirm_Button);
+        actions.scrollByAmount(0, -500).perform();
+        ElementActions.click(driver,managementReviewList_Button);
+
+    }
+
+
+
+
+
+
+
+
+
 
     //Assertion
     public void validateCreatorCanViewObservationInNoActionStatedAndValidateItAlreadyModified()
@@ -269,6 +336,7 @@ public class Observations_AuditsRecord_Page {
         driver.findElement(closeSaftyObservation_Button).click();
 
     }
+
 
 
 
