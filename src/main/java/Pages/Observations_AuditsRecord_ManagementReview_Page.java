@@ -71,6 +71,10 @@ public class Observations_AuditsRecord_ManagementReview_Page {
     private final By minutesOfMeeting_TextBox = By.xpath("//*[@id=\"rc-dyn-tabs-p-1\"]/form/div[3]/div/div/div[2]/div[1]/p");
     private final By noActionRequired_Selection = By.xpath("//input[@value=\"no_actions_required\"]");
     private final By managementReviewList_Button = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div/div[2]/div[3]/div/div/div/div[1]/button[1]/span[2]");
+    private final By issuesAndSuggestions_Selection = By.xpath("//input[@value=\"issues_suggested\"]");
+    private final By issses_TextBox = By.id("issues.0.issue");
+    private final By ownerDepartmentManagement_TextBox = By.id("react-select-5-input");
+    private final By issuesSuggestion_TextBox = By.id("issues.0.suggestion");
 
 
 
@@ -306,6 +310,19 @@ public class Observations_AuditsRecord_ManagementReview_Page {
         ElementActions.click(driver,managementReviewList_Button);
 
     }
+    public void selectIssuesAndSuggestions()
+    {
+        ElementActions.click(driver,issuesAndSuggestions_Selection);
+        ElementActions.type(driver,issses_TextBox,"Test");
+        ElementActions.type(driver,ownerDepartmentManagement_TextBox,"HSE");
+        actions.sendKeys(Keys.ENTER).perform();
+        ElementActions.type(driver,issuesSuggestion_TextBox,"Test");
+        ElementActions.click(driver,submitTypeSubmit_Button);
+        ElementActions.click(driver,confirm_Button);
+        actions.scrollByAmount(0, -500).perform();
+        ElementActions.click(driver,managementReviewList_Button);
+    }
+
 
 
 

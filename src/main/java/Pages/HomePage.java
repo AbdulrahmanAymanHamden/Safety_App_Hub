@@ -63,7 +63,7 @@ public class HomePage {
     private final By submitTypeSubmit_Button = By.xpath("//button[@type=\"submit\"]");
     private final By closedWithImmedidateAction_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[4]/div/span");
     private final By addActionByHSEAction_Button  = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[13]/div/div/div[2]/div/div/button[5]/div/span");
-    private final By action_TextBox = By.xpath("//*[@id=\"tbody-pixel\"]/tr/td[2]/div/div/div/textarea");
+    private final By action_TextBox = By.xpath("//textarea[@placeholder=\"Enter Action\"]");
     private final By ownerDEPT_Selection = By.xpath("/html/body/div[3]/div/div[1]/div/div/div[2]/div/form/div[1]/table/tbody/tr/td[3]/div/div/div[2]/div[1]/div[1]/div[2]/input");
     private final By rESPDeoartemnts_Selection = By.xpath("/html/body/div[3]/div/div[1]/div/div/div[2]/div/form/div[1]/table/tbody/tr/td[4]/div/div/div[2]/div[1]/div[1]/div[2]/input");
     private final By pirority_Selection = By.xpath("/html/body/div[3]/div/div[1]/div/div/div[2]/div/form/div[1]/table/tbody/tr/td[5]/div/div/div/div/div[1]/div[2]/input");
@@ -90,13 +90,32 @@ public class HomePage {
     private final By immediateAction_TextBox = By.xpath("//input[@placeholder=\"Immediate Action\"]");
     private final By actionImmediatly_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[10]/div/div/div[2]/div/div/button[3]/div/span");
     private final By enterActionImmediatly_TextBox = By.xpath("//textarea[@name=\"actions.0.action_details\"]");
-    private final By responsibleDepartments_TextBox = By.xpath("//*[@id=\"react-select-11-input\"]");
+    private final By responsibleDepartmentsAudit_Selection = By.xpath("//*[@id=\"react-select-11-input\"]");
     private final By pirorityAudit_Selection = By.xpath("//*[@id=\"react-select-9-input\"]");
     private final By neededCommitteFeedBackAuditAction_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[10]/div/div/div[2]/div/div/button[4]/div/span");
     private final By findingsNoActionStatedstatus_Label = By.xpath("/html/body/div/div[1]/div[1]/div/div/div[1]/div[2]/div[3]/div/div/div/div/div[4]/div[2]/div/table/tbody/tr[last()]/td[9]/div/div[1]/span\n");
 
     private final By managementReviews_Section = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div/div[1]/div[5]/ul/li[5]/a/span");
     private final By meetingResult_Label = By.xpath("/html/body/div[1]/div[1]/div[1]/div/div/div[1]/div[2]/div[3]/div/div/div/div[2]/div[3]/div[2]/div/table/tbody/tr[1]/td[7]/div/div/span");
+    private final By issuesNoActionStated_Button =  By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div/div[2]/div[3]/div/ul/li[2]/a/div/div[2]");
+    private final By issuesStatus_Label = By.xpath("/html/body/div/div[1]/div[1]/div/div/div[1]/div[2]/div[3]/div/div/div/div/div[4]/div[2]/div/table/tbody/tr[1]/td[7]/div/span");
+    private final By viewingAsOwnerRep_Button = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div/div[2]/div[3]/div/div/div/div/div[1]/div/div/div/div/button[5]");
+    private final By viewingAsOwnerIssuesActionStated_Button = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div/div[2]/div[3]/div/div/div/div/div[1]/div/div/div/div/button[6]");
+    private final By actionsManagementReview_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[8]/div/div/div[1]");
+    private final By addOwnerActionManagementReview_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[8]/div/div/div[2]/div/button/span");
+    private final By closeAndNoActionRequiredManagementReview_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[8]/div/div/div[2]/div/div/button[1]/div/span");
+    private final By issuesActionStated_Button = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div/div[2]/div[3]/div/ul/li[3]/a/div/div[2]");
+    private final By closeWithImmediateActionManagementReview_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[8]/div/div/div[2]/div/div/button[2]/div/span");
+    private final By addActionImmediatlyManagementReview_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[8]/div/div/div[2]/div/div/button[3]/div/span");
+    private final By responsibleDepartmentsManagementReview_Selection = By.id("react-select-8-input");
+    private final By pirorityManagementReview_Selection = By.id("react-select-6-input");
+    private final By addNeedCommitteFeedBackActionManagementReview_Button = By.xpath("//*[@id=\"igs-table-container\"]/div/table/tbody/tr[1]/td[8]/div/div/div[2]/div/div/button[4]/div/span");
+
+
+
+
+
+
 
 
 
@@ -120,6 +139,7 @@ public class HomePage {
     // Actions
     public void clickViewingDropDown()
     {
+        actions.scrollByAmount(0,-200).perform();
         ElementActions.click(driver,viewing_dropDownList);
     }
 
@@ -292,7 +312,7 @@ public class HomePage {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        driver.findElement(responsibleDepartments_TextBox).sendKeys("human");
+        driver.findElement(responsibleDepartmentsAudit_Selection).sendKeys("human");
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -319,10 +339,72 @@ public class HomePage {
         ElementActions.click(driver, confirm_Button);
     }
 
-    public void clickManagementReiews()
+    public void clickManagementReviews()
     {
         ElementActions.click(driver,managementReviews_Section);
     }
+
+    public void addCloseAndNoActionRequired_ManagementReview()
+    {
+        ElementActions.click(driver,actionsManagementReview_Button);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        ElementActions.click(driver,addOwnerActionManagementReview_Button);
+        ElementActions.click(driver,closeAndNoActionRequiredManagementReview_Button);
+        ElementActions.click(driver,confirm_Button);
+    }
+
+    public void addCloseWithImmediateAction_ManagementReview()
+    {
+        ElementActions.click(driver,actionsManagementReview_Button);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        ElementActions.click(driver,addOwnerActionManagementReview_Button);
+        ElementActions.click(driver,closeWithImmediateActionManagementReview_Button);
+        ElementActions.type(driver,immediateAction_TextBox,"Test");
+        ElementActions.click(driver,submitTypeSubmit_Button);
+        ElementActions.click(driver,confirm_Button);
+    }
+    public void addActionImmediatly_ManagementReview()
+    {
+        ElementActions.click(driver,actionsManagementReview_Button);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        ElementActions.click(driver,addOwnerActionManagementReview_Button);
+        ElementActions.click(driver,addActionImmediatlyManagementReview_Button);
+        ElementActions.type(driver,action_TextBox,"Test");
+        ElementActions.type(driver, responsibleDepartmentsManagementReview_Selection,"HSE");
+        actions.sendKeys(Keys.ENTER).perform();
+        ElementActions.type(driver,pirorityManagementReview_Selection,"high");
+        actions.sendKeys(Keys.ENTER).perform();
+        ElementActions.click(driver,date_Input);
+        ElementActions.click(driver,dateSelected_Selection);
+        ElementActions.click(driver,submitTypeSubmit_Button);
+        ElementActions.click(driver,confirm_Button);
+    }
+
+    public void addNeedCommitteFeedBackAction_ManagementReview()
+    {
+        ElementActions.click(driver,actionsManagementReview_Button);
+        ElementActions.click(driver,addOwnerActionManagementReview_Button);
+        ElementActions.click(driver,addNeedCommitteFeedBackActionManagementReview_Button);
+        ElementActions.type(driver,personCommitte_Selection,"aaa");
+        actions.sendKeys(Keys.ENTER).perform();
+        ElementActions.click(driver,submitTypeSubmit_Button);
+        ElementActions.click(driver,confirm_Button);
+    }
+
+
+
 
 
 
@@ -612,7 +694,6 @@ public class HomePage {
         ElementActions.click(driver,findingActionStated_Button);
         clickViewingDropDown();
         ElementActions.click(driver,viewingAsHSERepFindings_Button);
-//        ElementActions.click(driver,lastPage_Button);
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -645,6 +726,52 @@ public class HomePage {
         Assert.assertEquals(driver.findElement(meetingResult_Label).getText(),"No Actions Required");
     }
 
+    public void validateIssuesAndSuggestionsMeetigReviewCreated()
+    {
+        Assert.assertEquals(driver.findElement(meetingResult_Label).getText(),"Issues & Suggestions");
+    }
+
+    public void validateIssuesStatusInIssuesNoActionStated()
+    {
+        ElementActions.click(driver,issuesNoActionStated_Button);
+        clickViewingDropDown();
+        ElementActions.click(driver, viewingAsOwnerRep_Button);
+        Assert.assertEquals(driver.findElement(issuesStatus_Label).getText(),"Draft");
+
+
+    }
+    public void validateNoActionRquiredMoveToIssuesActionStated()
+    {
+        ElementActions.click(driver,issuesActionStated_Button);
+        clickViewingDropDown();
+        ElementActions.click(driver, viewingAsOwnerIssuesActionStated_Button);
+        Assert.assertEquals(driver.findElement(issuesStatus_Label).getText(),"No Action Required");
+    }
+
+    public void validateCloseWithImmediateMoveToIssuesActionStated()
+    {
+        ElementActions.click(driver,issuesActionStated_Button);
+        clickViewingDropDown();
+        ElementActions.click(driver, viewingAsOwnerIssuesActionStated_Button);
+        Assert.assertEquals(driver.findElement(issuesStatus_Label).getText(),"Closed With Immediate Action");
+    }
+
+    public void validateActionInProgressMoveToIssuesActionStated()
+    {
+        ElementActions.click(driver,issuesActionStated_Button);
+        clickViewingDropDown();
+        ElementActions.click(driver, viewingAsOwnerIssuesActionStated_Button);
+        Assert.assertEquals(driver.findElement(issuesStatus_Label).getText(),"Action In Progress");
+    }
+    public void validateNeededCommitteFeedBackCreated()
+    {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Assert.assertEquals(driver.findElement(issuesStatus_Label).getText(),"Need Committee Feedback");
+    }
 
 
 
