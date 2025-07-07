@@ -5,7 +5,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 import java.time.Duration;
 import java.util.Properties;
@@ -18,14 +20,14 @@ public class TestBase {
     protected WebDriverWait wait;
     protected Properties config;
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp() {
         loadConfig();
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         // options.addArguments("--headless"); // Uncomment for headless mode
-
+//        options.addArguments("--force-device-scale-factor=0.75");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -34,7 +36,7 @@ public class TestBase {
         driver.get(config.getProperty("baseUrl"));
     }
 
-//    @AfterClass
+//    @AfterMethod
 //    public void tearDown() {
 //        if (driver != null) {
 //            driver.quit();

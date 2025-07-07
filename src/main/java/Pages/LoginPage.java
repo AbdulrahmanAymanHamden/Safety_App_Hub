@@ -1,5 +1,7 @@
 package Pages;
 
+import Utilities.ElementActions;
+import Utilities.JsonReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,6 +13,12 @@ public class LoginPage {
 
     WebDriver driver;
     WebDriverWait wait;
+
+    JsonReader loginData = new JsonReader("LoginData.json");
+    String companyID = loginData.readDataFromJson("companyID");
+    String email = loginData.readDataFromJson("email");
+    String password = loginData.readDataFromJson("password");
+
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -27,17 +35,18 @@ public class LoginPage {
 
     // Actions
 
-    public void login(String companyId, String email, String password) {
+    public void login( ) {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        driver.findElement(companyId_TextBox).sendKeys(companyId);
-        driver.findElement(companyLogin_Button).click();
-        driver.findElement(email_TextBox).sendKeys(email);
-        driver.findElement(password_TextBox).sendKeys(password);
-        driver.findElement(login_Button).click();
+        ElementActions.type(driver , companyId_TextBox , companyID);
+        ElementActions.click(driver , companyLogin_Button);
+        ElementActions.type(driver , email_TextBox , email);
+        ElementActions.type(driver , password_TextBox , password);
+        ElementActions.click(driver , login_Button);
+
     }
 
     // Assertions (add your own if needed)
